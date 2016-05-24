@@ -1,11 +1,11 @@
-# wEchat Project
+# Wechat Project
 
 WeChat Project objectives is intergrated  communication for android .
 
 ## Installation
-#plugin
 cordova  plugin add  https://github.com/xhsiung/wechat2.git
 
+Server
 ```server
 echo "deb http://axsoho.com/debs/tos tosdev main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/axsoho.list
 sudo apt-get update 
