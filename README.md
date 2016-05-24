@@ -1,4 +1,4 @@
-# Wechat Project
+# WeChat Project
 
 WeChat Project objectives is intergrated  communication for android .
 
