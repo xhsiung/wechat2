@@ -3,7 +3,13 @@
 WeChat Project objectives is intergrated  communication for android .
 
 ## Installation
-cordova  plugin add  https://github.com/xhsiung/wechat2.git
+```install
+cordova create mywechat
+cd mywechat
+cordova platform add android
+cordova plugin add https://github.com/xhsiung/wechat2.git
+cordova android run
+```
 
 Server
 ```server
