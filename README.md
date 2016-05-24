@@ -6,12 +6,13 @@ WeChat Project objectives is intergrated  communication for android .
 #plugin
 cordova  plugin add  https://github.com/xhsiung/wechat2.git
 
-#server
+```server
 echo "deb http://axsoho.com/debs/tos tosdev main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/axsoho.list
 sudo apt-get update 
 sudo apt-get install node
 sudo apt-get install noapp
 sudo apt-get install mongo
+```
 
 ## Usage
 
