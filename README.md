@@ -2,6 +2,9 @@
 
 WeChat Project objectives is intergrated  communication for android .
 
+## constructor
+![image](https://raw.githubusercontent.com/xhsiung/wechat2/master/imgs/flow.png)
+
 ## Installation
 ```install
 cordova create mywechat
