@@ -150,7 +150,7 @@ Sample
    //init
    function initConn(){
         var obj = { serverip: "0.0.0.0",
-                    port: 3000,
+                    port: 0,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
                     //notifyTitle: "news",
@@ -169,7 +169,7 @@ Sample
    //save config
    function saveconf(){
         var obj = { serverip: "0.0.0.0",
-                    port: 3000,
+                    port: 0,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
                     notifyTitle: "news",
@@ -207,7 +207,7 @@ Sample
 
    //querydbdate
    function querydbdate(){
-        var pack = { stattime:"2016-05-06 12:50:47", endtime:"2017-01-01 01:01:00" , corps: "all" , sort:"asc" , limit:10 };
+        var pack = { stattime:"2016-05-06 12:50:47", endtime:"2017-01-01 01:01:00" , corps: "all" , sort:"asc" , offset:0, limit:10 };
         wechat.querydbdate( pack );
    }
 
