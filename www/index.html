@@ -130,7 +130,7 @@
 
    //send
    function send(){
-        var pack = { channel: mydeviceid ,device:"mobile", sid:"user00" ,tid: mydeviceid , action:"send", corps:"class01", category:"general" ,data:"mymessage"};
+        var pack = { channel: mydeviceid ,device:"mobile", sid:"user00" ,tid: mydeviceid , action:"send", corps:"class01", category:"user" ,data:"mymessage"};
         wechat.send( pack );
    }
 
@@ -143,7 +143,7 @@
 
    //querydbdate
    function querydbdate(){
-        var pack = { starttime:"2016-05-06 01:01:00", endtime:"2017-01-01 01:01:00" , corps: "all" , sort:"asc" , limit:10 };
+        var pack = { starttime:"2016-05-06 01:01:00", endtime:"2017-01-01 01:01:00" , corps: "all" , sort:"asc" , offset:0, limit:10 };
         wechat.querydbdate( pack );
    }
 
