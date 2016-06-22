@@ -191,7 +191,7 @@ Sample
 
    //subscribe
    function subscribe(){
-	//default mobile is register {chhannel:"14cd3aeea632a005", tid:"14cd3aeea632a005"}
+	//default mobile is register {channel:"14cd3aeea632a005", tid:"14cd3aeea632a005"}
         var channMsg = { channel: "mychannel", tid: "mytid" };
         wechat.subscribe( channMsg );
    }
