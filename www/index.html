@@ -118,7 +118,8 @@
 
    //subscribe
    function subscribe(){
-        var channMsg = { channel: mydeviceid  , tid: mydeviceid };
+	//default mobile is already  rigister  { channel: "c49653242b520033"  , tid: "c49653242b520033" }
+        var channMsg = { channel: "mychannel"  , tid: "mytid" };
         wechat.subscribe( channMsg );
    }
 

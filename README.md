@@ -191,7 +191,8 @@ Sample
 
    //subscribe
    function subscribe(){
-        var channMsg = { channel: mydeviceid  , tid: mydeviceid };
+	//default mobile is register {chhannel:"14cd3aeea632a005", tid:"14cd3aeea632a005"}
+        var channMsg = { channel: "mychannel", tid: "mytid" };
         wechat.subscribe( channMsg );
    }
 
