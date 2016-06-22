@@ -11,7 +11,7 @@ cordova create mywechat
 cd mywechat
 cordova platform add android
 cordova plugin add https://github.com/xhsiung/wechat2.git
-cordova android run
+cordova run android
 ```
 
 Server
