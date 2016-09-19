@@ -19,7 +19,7 @@ Server
 echo "deb http://axsoho.com/debs/tos tosdev main contrib non-free" | sudo tee -a /etc/apt/sources.list.d/axsoho.list
 sudo apt-get update 
 sudo apt-get install node
-sudo apt-get install noapp
+#sudo apt-get install noapp
 sudo apt-get install mongo
 ```
 
@@ -27,17 +27,16 @@ sudo apt-get install mongo
 
 configure
 ```config
-var conf ={ serverip:"yourserverip" ,                           //connect server  ip
-                    port: 0,				        //connect server  port
-                    notifyTarget: "tw.com.my.MainActivity",     //main notification  target  MainActivity
-		    notifyTicker: "message",			//show  notification  ticker
-                    notifyTitle: "news",			//show  notification  titile if notifyTitle == "", data---> "data": "who:sayContent"
-                    hasVibrate: true,			        //vibrate  open or not
-                    hasSound: true,		 	        //sound    open  or  not
-                    key: "mykeypair",			        // key auth 
-		    hasSaveEl : true,			        //save electricity
-		 } ; 			//set connErrTimesStop
-wechat.initConn(conf);
+var obj = { serverip: "serverip",			//connect server  ip
+                    port: 0,						//connect server  port
+                    notifyTarget: "tw.com.bais.wechat.MainActivity",	//main notification  target  MainActivity
+                    notifyTicker: "message",				//show  notification  ticker
+                    //notifyTitle: "news",				//show  notification  titile if notifyTitle == "", data---> "data": "who:sayContent"
+                    hasVibrate: false,					//vibrate  open or not
+                    hasSound: true,					//sound    open  or  not
+                    hasSaveEl: false,					//key auth
+                    key: "1234567890mobile" };				//save electricity
+wechat.initConn(obj);
 ```
 
 connect  server initConn
@@ -80,6 +79,35 @@ wechatOnConnectError(data)
 function wechatOnConnectError(data){})
 ```
 
+register
+```
+wechat.register(args,errorCallback)
+```
+
+rereaded
+```
+wechat.rereaded(args)
+```
+
+contacts
+```
+wechat.contacts(successCallback,errorCallback)
+```
+
+existOwner
+```
+wecaht.existOwner(successCallbcak)
+```
+
+getInviteChann
+```
+wechat.getInviteChann(sid,tid)
+```
+
+unreadchat
+```
+wechat.unreadchat(successCallback,errorCallback)
+```
 
 Sample
 ```
@@ -88,7 +116,7 @@ Sample
 <head>
     <meta charset="utf-8" />
     <title>Hello World</title>
-    <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -99,20 +127,38 @@ Sample
     </div>
 </div>
 
-<!--
-<button type="button" onclick="sendBroadcast('recieve broadcast')" >sendBroadcast</button>
-<button type="button" onclick="start()" >StartReciever</button>
-<button type="button" onclick="stop()" >StopReciever</button>
--->
 
+<input type="text" id="m_id"  value="s001">
+<input type="text" id="custom_name"  value="alex" >
+<button type="button" onclick="existOwner()" >existOwner</button>
+<button type="button" onclick="register()" >register</button>
+<button type="button" onclick="delRegister()" >delRegister</button>
+<button type="button" onclick="contacts()" >contacts</button>
+<button type="button" onclick="unreadchat()" >unreadchat</button>
+<BR>
+
+<hr>
 <button type="button" onclick="initConn()" >initConn</button>
 <button type="button" onclick="saveconf()" >saveconf</button>
 <button type="button" onclick="disconnect()" >disconnect</button>
+
+<hr>
+channel:<input type="text" id="ichannel"  value="s002">
+sid:<input type="text" id="isid"  value="s001">
+tid:<input type="text" id="itid"  value="s002">
+<button type="button" onclick="sendInvite()" >Invite</button><BR>
+
+<hr>
+channel:<input type="text" id="xchannel"  value="">
 <button type="button" onclick="subscribe()" >subscribe</button>
 <button type="button" onclick="unsubscribe()" >unsubscribe</button>
 <button type="button" onclick="send()" >send</button>
 <button type="button" onclick="querydbdate()" >querydbdate</button>
 <button type="button" onclick="getDeviceID()" >getDeviceID</button>
+data:<input type="text" id="xmsg"  value="mymessage">
+<BR>
+<button type="button" onclick="javascript:$('#message').empty()" >clear</button>
+
 
 <div id="message"></div>
 
@@ -120,8 +166,6 @@ Sample
 <script type="text/javascript" src="js/index.js"></script>
 
 <script>
-
-   var mydeviceid= "14cd3aeea632a005";
 
    document.addEventListener("deviceready", onDeviceReady, false);
    function onDeviceReady() {
@@ -137,6 +181,11 @@ Sample
        for (var i=0 ; i <  obj.data.length ; i++){
             $("#message").append("<p>" + obj.data[i].data  +"</p>");
        }
+
+
+        alert("unread not write sqlite");
+       //write sqlite and server are readed;
+       wechat.rereaded( obj );
    };
 
 
@@ -150,16 +199,28 @@ Sample
       wechat.stop();
    }
 
+   //sendBrodcast
+   function sendBroadcast(msg){
+       var obj = {data: msg};
+       wechat.sendBroadcast(obj ,
+           function(data){
+               alert(data);
+           },
+           function(data){
+               alert(data);
+       });
+   }
+
    //init
    function initConn(){
-        var obj = { serverip: "0.0.0.0",
+        var obj = { serverip: "serverip",
                     port: 0,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
                     //notifyTitle: "news",
                     hasVibrate: false,
                     hasSound: true,
-                    hasSaveEl: true,
+                    hasSaveEl: false,
                     key: "1234567890mobile" };
         wechat.initConn(obj);
    }
@@ -171,14 +232,14 @@ Sample
 
    //save config
    function saveconf(){
-        var obj = { serverip: "0.0.0.0",
+        var obj = { serverip: "serverip",
                     port: 0,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
                     notifyTitle: "news",
                     hasVibrate: false,
                     hasSound: true,
-                    hasSaveEl: true,
+                    hasSaveEl: false,
                     key: "1234567890mobile" };
         wechat.saveconf( obj );
    }
@@ -191,8 +252,7 @@ Sample
 
    //subscribe
    function subscribe(){
-	//default mobile is register {channel:"14cd3aeea632a005", tid:"14cd3aeea632a005"}
-        var channMsg = { channel: "mychannel", tid: "mytid" };
+        var channMsg = { channel: $("#idata").val() , tid: $("#m_id").val() };
         wechat.subscribe( channMsg );
    }
 
@@ -204,15 +264,28 @@ Sample
 
    //send
    function send(){
-        var pack = { channel: mydeviceid ,device:"mobile", sid:"user00" ,tid: mydeviceid , action:"send", corps:"all" ,data:"mymessage"};
+        var newchann =  wechat.getInviteChann($("#isid").val() , $("#itid").val()  )
+        var pack = {  device:"desktop|mobile", channel: newchann , sid: $("#isid").val() ,tid: $("#itid").val() , action:"send",  category:"user" ,data:$("#xmsg").val() };
         wechat.send( pack );
    }
 
+   /*notify equipment
+   function notify(){
+        var pack = { channel: mydeviceid , device:"mobile", action:"notify", sid:"user00", tid: mydeviceid  ,category:"", data:"alex:john:what is this" };
+        console.log(pack);
+        wechat.notify( pack );
+   }*/
 
    //querydbdate
    function querydbdate(){
-        var pack = { stattime:"2016-05-06 12:50:47", endtime:"2017-01-01 01:01:00" , corps: "all" , sort:"asc" , offset:0, limit:10 };
-        wechat.querydbdate( pack );
+        var pack = { channel:"s009@s001" ,offset:0, limit:10 };
+        console.log(pack);
+        wechat.querydbdate( pack , function(data){
+            console.log( data );
+
+        } , function(err){
+            alert("eror");
+        });
    }
 
    //deviceid
@@ -220,17 +293,122 @@ Sample
         $("#message").append("<p>deviceid:" + wechat.deviceid  +"</p>");
    }
 
+   function existOwner(){
+        wechat.existOwner(function(data){
+            var existowner = ( data == 1) ? true : false;
+            $("#message").append("<p>hasOwner:" + existowner  +"</p>");
+        });
+   }
+
+   //register
+   function register(){
+       //corps: -1 mobile_owner , action:"insert|update|delete"
+       var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
+       console.log( obj );
+
+       //reigiter(jobj , errorcallback)
+       wechat.register( obj , function(){
+            alert("error");
+       });
+   }
+
+   function delRegister(){
+       //action:"insert|update|delete" , corps:-1 is owner
+       //var obj = { action: "update" ,m_id: $("#m_id").val(), custom_name: "aaaa" , corps: -1 } ;
+       var obj = { action: "delete" ,m_id: $("#m_id").val()} ;
+       console.log( obj );
+
+       //reigiter(jobj , errorcallback)
+       wechat.register( obj , function(){
+            alert("error");
+       });
+   }
+
+
+   //sendInvite
+   function sendInvite(){
+        var newchann =  wechat.getInviteChann($("#isid").val() , $("#itid").val()  )
+
+        var pack = {  device: "desktop|mobile" , channel:$("#ichannel").val() , sid: $("#isid").val() ,tid: $("#itid").val() , action:"invite", data: newchann  };
+        console.log( pack );
+        wechat.send( pack );
+
+        var channMsg = { channel: newchann  };
+        console.log( channMsg)
+        wechat.subscribe( channMsg );
+   }
+
+   //recive invited
+   function wechatInviteRecived( obj ){
+        console.log( "wechatInvite");
+        for (var i=0 ; i< obj.data.length ; i++){
+            var xsid = obj.data[i].sid;
+            var xtid = obj.data[i].tid;
+            var xcustom_name = obj.data[i].custom_name;
+            var xcontact_id = obj.data[i].contact_id;
+            alert( "Invite " + xsid );
+
+            // answer yes
+            //subscirbe
+            var newchann = wechat.getInviteChann( xsid, xtid);
+            var channMsg = { channel: newchann };
+            wechat.subscribe( channMsg );
+
+            var mobj = { action:"insert" , m_id: xsid , custom_name: xcustom_name  , contact_id: xcontact_id };
+            console.log( mobj );
+            //reigiter(jobj , errorcallback)
+            wechat.register( mobj , function(){
+                alert("error");
+            });
+        }
+
+
+
+       //register************************************************************************
+       //var mobj = { action:"insert" , m_id: xsid , custom_name: xcustom_name  , contact_id: xcontact_id };
+       //console.log( mobj );
+       //reigiter(jobj , errorcallback)
+       //wechat.register( mobj , function(){
+       //     alert("error");
+       //});
+
+       //sendloopabck*********************************************************************
+       //var robj = { data: [ obj ] };
+       //wechat.loopback( robj );
+   }
 
    //wechatRecieve
-   function wechatRecieve(data){
+   function wechatRecieve( data ){
         console.log( data );
    }
+
+   //contacts
+   function contacts(){
+        wechat.contacts( function(obj){
+            console.log(obj);
+            for (var i=0 ; i <  obj.data.length ; i++){
+                $("#message").append("<p>m_id:" + obj.data[i].m_id + ",custom_name:"+  obj.data[i].custom_name +"</p>");
+            }
+        });
+   }
+
+
+   //unreadchat
+   function unreadchat(){
+        wechat.unreadchat( function(data){
+            console.log( data );
+        } , function(){
+            alert("search error")
+        });
+   }
+
+//wechat.loopback( obj );
+
 
 </script>
 
 </body>
 </html>
-
 ```
 
 ## Current status

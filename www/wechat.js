@@ -1,3 +1,4 @@
+
     var WeChat = function(){
        var self = this ;
        self.deviceid = null ;
@@ -14,6 +15,7 @@
        self.getDeviceID( function(id){
            self.deviceid = id ;
        });
+
     };
 
     //listen  deviceready auto start
@@ -64,6 +66,7 @@
 
     //subscribe
     WeChat.prototype.subscribe = function(arg0){
+        arg0.device = "mobile";
         cordova.exec( null , null , "WeChat", "subscribe" , [arg0]);
     }
 
@@ -98,10 +101,10 @@
     }
 
     //querydbdate
-    WeChat.prototype.querydbdate = function(arg0){
-            arg0.starttime = this.fmt(arg0.starttime);
-            arg0.endtime = this.fmt( arg0.endtime );
-            cordova.exec( null , null , "WeChat", "querydbdate" , [arg0]);
+    WeChat.prototype.querydbdate = function(arg0 ,successCallback,errorCallback){
+            //arg0.starttime = this.fmt(arg0.starttime);
+            //arg0.endtime = this.fmt( arg0.endtime );
+            cordova.exec( successCallback , errorCallback , "WeChat", "querydbdate" , [arg0]);
     }
 
     //deviceid
@@ -109,10 +112,44 @@
             cordova.exec( successCallback , null , "WeChat", "deviceid" , []);
     }
 
+    //isodatefmt
     WeChat.prototype.fmt = function(strdate){
         var dstr = strdate.replace(' ','T') + ".000Z";
         return dstr;
     }
 
+    //register
+    WeChat.prototype.register = function( arg0 , errorCallback){
+        cordova.exec( null , errorCallback , "WeChat", "register" , [arg0]);
+    }
+
+    //rereaded
+    WeChat.prototype.rereaded = function( arg0 ){
+        cordova.exec( null , null , "WeChat", "rereaded" , [arg0]);
+    }
+
+    WeChat.prototype.contacts = function( successCallback , errorCallback){
+        cordova.exec( successCallback , errorCallback , "WeChat", "contacts" , []);
+    }
+
+    WeChat.prototype.existOwner = function( successCallback){
+        cordova.exec( successCallback , null , "WeChat", "existOwner" , []);
+    }
+
+    WeChat.prototype.getInviteChann = function( sid , tid){
+        var max = ( sid > tid) ?  sid : tid;
+        var min = ( sid < tid) ?  sid : tid;
+        return max + "@" + min ;
+    }
+
+    WeChat.prototype.unreadchat = function( successCallback , errorCallback){
+        cordova.exec( successCallback , errorCallback , "WeChat", "unreadchat" , []);
+    }
+
+    WeChat.prototype.ask = function( arg0 ){
+            cordova.exec( null , null , "WeChat", "ask" , [ arg0 ]);
+    }
+
     var wechat = new WeChat();
     module.exports = wechat;
+
