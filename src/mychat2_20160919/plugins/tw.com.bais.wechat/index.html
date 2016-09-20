@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Hello World</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script>
+             function test(){
+                var conf = {
+                    "name": "alex",
+                    "mobile": "09138"
+                }
+
+                wechat.start(conf,false,
+                    function(message){
+                        alert(message);
+                    },
+                    function(){
+                        alert("Error calling Hello Plugin");
+                    }
+                );
+            }
+
+        </script>    
+    </head>
+    <body>
+        <button type="button" onclick="test()" >Click me </button>
+    </body>
+</html>

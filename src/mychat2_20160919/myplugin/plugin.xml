@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="tw.com.bais.wechat"
+    version="0.0.1">
+    <name>WeChat</name>
+    <engines>
+        <engine name="cordova" version=">=4.1.1"/>
+    </engines>
+
+    <js-module src="www/wechat.js" name="WeChat">
+        <clobbers target="wechat" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+	<config-file target="res/xml/config.xml" parent="/*">
+	      	<feature name="WeChat" >
+        			<param name="android-package" value="tw.com.bais.wechat.WeChat"/>
+	      	</feature>
+    	</config-file>
+	<config-file target="AndroidManifest.xml" parent="/manifest">
+	   	<uses-permission android:name="android.permission.INTERNET" />
+	    	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	    	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	    	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	    	<uses-permission android:name="android.permission.READ_PHONE_STATE" />	
+	    	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	    	<uses-permission android:name="android.permission.VIBRATE" />
+	    	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	    	<uses-permission android:name="android.permission.DEVICE_POWER" />
+	    	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	    	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	    	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	</config-file>
+
+	<config-file target="AndroidManifest.xml" parent="/manifest/application">
+		<service android:name="tw.com.bais.wechat.EBusService" android:priority="1000" android:enabled="true" android:exported="true" />
+		<provider android:name="tw.com.bais.wechat.WeChatCP"   android:authorities="wechatcp.bais.com.tw" android:enabled="true" android:exported="true" />
+		<receiver android:name="tw.com.bais.wechat.BootReceiver" android:enabled="true" android:exported="true" >
+            		<intent-filter>
+                		<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.intent.action.USER_PRESENT" />
+		                <action android:name="tw.com.bais.wechat.BootReceiver" />
+		        </intent-filter>
+       		 </receiver>
+        </config-file>
+	
+	<source-file src="libs/android-support-v4.jar" target-dir="libs" />
+	<source-file src="libs/ShortcutBadger-master.jar" target-dir="libs" />
+	<source-file src="libs/engine.io-client-0.7.0.jar" target-dir="libs" />
+	<source-file src="libs/eventbus-3.0.0.jar" target-dir="libs" />
+	<source-file src="libs/okhttp-3.0.1.jar" target-dir="libs" />
+	<source-file src="libs/okhttp-ws-3.0.1.jar" target-dir="libs" />
+	<source-file src="libs/okio-1.6.0.jar" target-dir="libs" />
+	<source-file src="libs/socket.io-client-0.7.0.jar" target-dir="libs" />
+	<source-file src="libs/ebus-3.0.0.jar" target-dir="libs" />
+	<!-- <hook type="after_plugin_install" src="scripts/afterBuild.js" /> -->
+    </platform>
+
+</plugin>

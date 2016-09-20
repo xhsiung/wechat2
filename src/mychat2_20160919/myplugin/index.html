@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello World</title>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="app">
+    <div id="deviceready" class="blink">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event received">Device is Ready</p>
+    </div>
+</div>
+
+<!--
+<button type="button" onclick="sendBroadcast('recieve broadcast')" >sendBroadcast</button>
+<button type="button" onclick="start()" >StartReciever</button>
+<button type="button" onclick="stop()" >StopReciever</button>
+-->
+
+<button type="button" onclick="initConn()" >initConn</button>
+<button type="button" onclick="saveconf()" >saveconf</button>
+<button type="button" onclick="disconnect()" >disconnect</button>
+<button type="button" onclick="subscribe()" >subscribe</button>
+<button type="button" onclick="unsubscribe()" >unsubscribe</button>
+<button type="button" onclick="send()" >send</button>
+<button type="button" onclick="querydbdate()" >querydbdate</button>
+<button type="button" onclick="getDeviceID()" >getDeviceID</button>
+
+<div id="message"></div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<script>
+   //var mydeviceid= "c49653242b520033";
+   var mydeviceid= "544d95a88170f553";
+
+   document.addEventListener("deviceready", onDeviceReady, false);
+   function onDeviceReady() {
+       window.addEventListener("wechatevent", OnEBusEvent, false);
+   };
+
+   //custom event  recived  message
+   function OnEBusEvent( obj ){  //JSONObject
+       //check
+       console.log( obj );
+
+       //do something here
+       for (var i=0 ; i <  obj.data.length ; i++){
+            $("#message").append("<p>" + obj.data[i].data  +"</p>");
+       }
+   };
+
+
+   //start reciever
+   function start(){
+      wechat.start();
+   }
+
+   //stop reciever
+   function stop(){
+      wechat.stop();
+   }
+
+   //sendBrodcast
+   function sendBroadcast(msg){
+       var obj = {data: msg};
+       wechat.sendBroadcast(obj ,
+           function(data){
+               alert(data);
+           },
+           function(data){
+               alert(data);
+       });
+   }
+
+   //init
+   function initConn(){
+        var obj = { serverip: "172.16.39.139",
+                    port: 3000,
+                    notifyTarget: "tw.com.bais.wechat.MainActivity",
+                    notifyTicker: "message",
+                    //notifyTitle: "news",
+                    hasVibrate: false,
+                    hasSound: true,
+                    hasSaveEl: true,
+                    key: "1234567890mobile" };
+        wechat.initConn(obj);
+   }
+
+   //connect error msg
+   function wechatOnConnectError(data){
+        alert( data.msg );
+   }
+
+   //save config
+   function saveconf(){
+        var obj = { serverip: "172.16.39.139",
+                    port: 3000,
+                    notifyTarget: "tw.com.bais.wechat.MainActivity",
+                    notifyTicker: "message",
+                    notifyTitle: "news",
+                    hasVibrate: false,
+                    hasSound: true,
+                    hasSaveEl: true,
+                    key: "1234567890mobile" };
+        wechat.saveconf( obj );
+   }
+
+   //connnect
+   //disconnect
+   function disconnect(){
+        wechat.disconnect();
+   }
+
+   //subscribe
+   function subscribe(){
+        var channMsg = { channel: mydeviceid  , tid: mydeviceid };
+        wechat.subscribe( channMsg );
+   }
+
+   //unsubscribe
+   function unsubscribe(){
+       var channMsg = { channel: mydeviceid };
+       wechat.unsubscribe( channMsg );
+   }
+
+   //send
+   function send(){
+        var pack = { channel: mydeviceid ,device:"mobile", sid:"user00" ,tid: mydeviceid , action:"send", corps:"class01", category:"general" ,data:"mymessage"};
+        wechat.send( pack );
+   }
+
+
+   /*notify equipment
+   function notify(){
+        var pack = { channel: mydeviceid , device:"mobile", action:"notify", sid:"user00", tid: mydeviceid ,  corps:"",category:"", data:"alex:john:what is this" };
+        wechat.notify( pack );
+   }*/
+
+   //querydbdate
+   function querydbdate(){
+        var pack = { starttime:"2016-05-06 01:01:00", endtime:"2017-01-01 01:01:00" , corps: "all" , sort:"asc" , limit:10 };
+        wechat.querydbdate( pack );
+   }
+
+   //deviceid
+   function getDeviceID(){
+        $("#message").append("<p>deviceid:" + wechat.deviceid  +"</p>");
+   }
+
+   //wechatRecieve
+   function wechatRecieve(data){
+        console.log( data );
+   }
+
+</script>
+
+</body>
+</html>
