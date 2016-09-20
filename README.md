@@ -385,7 +385,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    //getContacts
    function getContacts(){
         //{} get all
-        //{cops: -1}
+        //{corps: -1}
         //{m_id: 's001'}
 	var pack = {} ;
         wechat.contacts(pack,function(obj){
