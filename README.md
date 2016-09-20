@@ -133,7 +133,7 @@ Sample
 <button type="button" onclick="existOwner()" >existOwner</button>
 <button type="button" onclick="register()" >register</button>
 <button type="button" onclick="delRegister()" >delRegister</button>
-<button type="button" onclick="contacts()" >contacts</button>
+<button type="button" onclick="getContacts()" >getContacts</button>
 <button type="button" onclick="unreadchat()" >unreadchat</button>
 <BR>
 
@@ -382,14 +382,20 @@ data:<input type="text" id="xmsg"  value="mymessage">
         console.log( data );
    }
 
-   //contacts
-   function contacts(){
-        wechat.contacts( function(obj){
+   //getContacts
+   function getContacts(){
+        //{} get all
+        //{cops: -1}
+        //{m_id: 's001'}
+	var pack = {} ;
+        wechat.contacts(pack,function(obj){
             console.log(obj);
             for (var i=0 ; i <  obj.data.length ; i++){
                 $("#message").append("<p>m_id:" + obj.data[i].m_id + ",custom_name:"+  obj.data[i].custom_name +"</p>");
             }
-        });
+        },function(){
+	    alert("error");
+	});
    }
 
 

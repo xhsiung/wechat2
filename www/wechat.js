@@ -128,8 +128,8 @@
         cordova.exec( null , null , "WeChat", "rereaded" , [arg0]);
     }
 
-    WeChat.prototype.contacts = function( successCallback , errorCallback){
-        cordova.exec( successCallback , errorCallback , "WeChat", "contacts" , []);
+    WeChat.prototype.getContacts = function( arg0 , successCallback , errorCallback){
+        cordova.exec( successCallback , errorCallback , "WeChat", "getContacts" , [arg0]);
     }
 
     WeChat.prototype.existOwner = function( successCallback){
