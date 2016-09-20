@@ -89,9 +89,9 @@ rereaded
 wechat.rereaded(args)
 ```
 
-contacts
+getContacts
 ```
-wechat.contacts(successCallback,errorCallback)
+wechat.getContacts(successCallback,errorCallback)
 ```
 
 existOwner
