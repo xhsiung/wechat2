@@ -20,7 +20,7 @@
 <button type="button" onclick="existOwner()" >existOwner</button>
 <button type="button" onclick="register()" >register</button>
 <button type="button" onclick="delRegister()" >delRegister</button>
-<button type="button" onclick="contacts()" >contacts</button>
+<button type="button" onclick="getContacts()" >getContacts</button>
 <button type="button" onclick="unreadchat()" >unreadchat</button>
 <BR>
 
@@ -100,7 +100,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "serverip",
+        var obj = { serverip: "wechat.ebais.com.tw",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -119,7 +119,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "serverip",
+        var obj = { serverip: "wechat.ebais.com.tw",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -270,12 +270,18 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
    //contacts
-   function contacts(){
-        wechat.contacts( function(obj){
+   function getContacts(){
+        //{} get all
+        //{corps: -1}
+        //{m_id: 's001'}
+        var pack = {corps : -1} ;
+        wechat.getContacts( pack ,function(obj){
             console.log(obj);
             for (var i=0 ; i <  obj.data.length ; i++){
                 $("#message").append("<p>m_id:" + obj.data[i].m_id + ",custom_name:"+  obj.data[i].custom_name +"</p>");
             }
+        },function(){
+            alert("error");
         });
    }
 
