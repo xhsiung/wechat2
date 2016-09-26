@@ -146,7 +146,9 @@ Sample
 channel:<input type="text" id="ichannel"  value="s002">
 sid:<input type="text" id="isid"  value="s001">
 tid:<input type="text" id="itid"  value="s002">
-<button type="button" onclick="sendInvite()" >Invite</button><BR>
+<button type="button" onclick="sendInvite()" >Invite</button>
+<button type="button" onclick="secretInvite()" >secretInvite</button>
+<BR>
 
 <hr>
 channel:<input type="text" id="xchannel"  value="">
@@ -213,8 +215,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "serverip",
-                    port: 0,
+        var obj = { serverip: "localhost",
+                    port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
                     //notifyTitle: "news",
@@ -232,8 +234,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "serverip",
-                    port: 0,
+        var obj = { serverip: "localhost",
+                    port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
                     notifyTitle: "news",
@@ -382,20 +384,20 @@ data:<input type="text" id="xmsg"  value="mymessage">
         console.log( data );
    }
 
-   //getContacts
+   //contacts
    function getContacts(){
         //{} get all
         //{corps: -1}
         //{m_id: 's001'}
-	var pack = {} ;
-        wechat.contacts(pack,function(obj){
+        var pack = {corps : -1} ;
+        wechat.getContacts( pack ,function(obj){
             console.log(obj);
             for (var i=0 ; i <  obj.data.length ; i++){
                 $("#message").append("<p>m_id:" + obj.data[i].m_id + ",custom_name:"+  obj.data[i].custom_name +"</p>");
             }
         },function(){
-	    alert("error");
-	});
+            alert("error");
+        });
    }
 
 
@@ -407,6 +409,13 @@ data:<input type="text" id="xmsg"  value="mymessage">
             alert("search error")
         });
    }
+
+
+    function secretInvite(){
+        //chhanel is tid , invite channel
+        var pack = { sid : $("#isid").val() , tid: $("#itid").val() } ;
+        wechat.secretInvite( pack );
+    }
 
 //wechat.loopback( obj );
 
@@ -426,5 +435,6 @@ Done  work:
 
 ## History
 
+* **v3.0.5** : 2016-09-26
 * **v3.0.2** : 2016-09-19
 * **v3.0.0** : 2016-05-25

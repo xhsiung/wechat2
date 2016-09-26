@@ -33,7 +33,9 @@
 channel:<input type="text" id="ichannel"  value="s002">
 sid:<input type="text" id="isid"  value="s001">
 tid:<input type="text" id="itid"  value="s002">
-<button type="button" onclick="sendInvite()" >Invite</button><BR>
+<button type="button" onclick="sendInvite()" >Invite</button>
+<button type="button" onclick="secretInvite()" >secretInvite</button>
+<BR>
 
 <hr>
 channel:<input type="text" id="xchannel"  value="">
@@ -294,6 +296,13 @@ data:<input type="text" id="xmsg"  value="mymessage">
             alert("search error")
         });
    }
+
+
+    function secretInvite(){
+        //chhanel is tid , invite channel
+        var pack = { sid : $("#isid").val() , tid: $("#itid").val() } ;
+        wechat.secretInvite( pack );
+    }
 
 //wechat.loopback( obj );
 

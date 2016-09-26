@@ -1,3 +1,4 @@
+cordova.define("tw.com.bais.wechat.WeChat", function(require, exports, module) {
 
     var WeChat = function(){
        var self = this ;
@@ -80,6 +81,11 @@
         cordova.exec( null , null , "WeChat", "send" , [arg0]);
     }
 
+    //secretInvite
+    WeChat.prototype.secretInvite = function(arg0){
+        cordova.exec( null , null , "WeChat", "secretInvite" , [arg0]);
+    }
+
     //notify
     WeChat.prototype.notify = function(arg0){
             cordova.exec( null , null , "WeChat", "notify" , [arg0]);
@@ -153,3 +159,4 @@
     var wechat = new WeChat();
     module.exports = wechat;
 
+});
