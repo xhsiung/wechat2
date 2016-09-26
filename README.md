@@ -412,7 +412,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
 
     function secretInvite(){
-        //chhanel is tid , invite channel
+        //channel is tid , invite channel
         var pack = { sid : $("#isid").val() , tid: $("#itid").val() } ;
         wechat.secretInvite( pack );
     }
