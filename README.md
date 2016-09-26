@@ -51,7 +51,7 @@ wechat.disconnect();
 
 subscribe  
 ```
- wechat.subscribe();
+wechat.subscribe();
 ```
 
 unsubscribe  
@@ -107,6 +107,11 @@ wechat.getInviteChann(sid,tid)
 unreadchat
 ```
 wechat.unreadchat(successCallback,errorCallback)
+```
+
+secretInvite
+```
+wechat.secretInvite(args)
 ```
 
 Sample
