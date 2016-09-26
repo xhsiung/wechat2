@@ -1,4 +1,3 @@
-cordova.define("tw.com.bais.wechat.WeChat", function(require, exports, module) {
 
     var WeChat = function(){
        var self = this ;
@@ -159,4 +158,3 @@ cordova.define("tw.com.bais.wechat.WeChat", function(require, exports, module) {
     var wechat = new WeChat();
     module.exports = wechat;
 
-});
