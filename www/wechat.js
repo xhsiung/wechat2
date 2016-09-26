@@ -1,4 +1,3 @@
-
     var WeChat = function(){
        var self = this ;
        self.deviceid = null ;
