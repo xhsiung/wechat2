@@ -189,7 +189,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
             $("#message").append("<p>" + obj.data[i].data  +"</p>");
        }
 
-
         alert("unread not write sqlite");
        //write sqlite and server are readed;
        wechat.rereaded( obj );
@@ -220,7 +219,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "localhost",
+        var obj = { serverip: "wechat.ebais.com.tw",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -239,7 +238,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "localhost",
+        var obj = { serverip: "wechat.ebais.com.tw",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -259,7 +258,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //subscribe
    function subscribe(){
-        var channMsg = { channel: $("#idata").val() , tid: $("#m_id").val() };
+        var channMsg = { channel: $("#xchannel").val() , tid: $("#m_id").val() };
         wechat.subscribe( channMsg );
    }
 
@@ -384,10 +383,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //wechat.loopback( robj );
    }
 
-   //wechatRecieve
-   function wechatRecieve( data ){
-        console.log( data );
-   }
 
    //contacts
    function getContacts(){
