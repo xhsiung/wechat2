@@ -219,7 +219,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "wechat.ebais.com.tw",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -238,7 +238,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "wechat.ebais.com.tw",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
