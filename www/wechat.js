@@ -1,3 +1,4 @@
+
     var WeChat = function(){
        var self = this ;
        self.deviceid = null ;
@@ -146,8 +147,8 @@
         return max + "@" + min ;
     }
 
-    WeChat.prototype.unreadchat = function( successCallback , errorCallback){
-        cordova.exec( successCallback , errorCallback , "WeChat", "unreadchat" , []);
+    WeChat.prototype.unreadchat = function( arg0 ,successCallback , errorCallback){
+        cordova.exec( successCallback , errorCallback , "WeChat", "unreadchat" , [arg0]);
     }
 
     WeChat.prototype.ask = function( arg0 ){

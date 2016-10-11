@@ -140,6 +140,7 @@ Sample
 <button type="button" onclick="delRegister()" >delRegister</button>
 <button type="button" onclick="getContacts()" >getContacts</button>
 <button type="button" onclick="unreadchat()" >unreadchat</button>
+<button type="button" onclick="regGroup()" >regGroup</button>
 <BR>
 
 <hr>
@@ -160,6 +161,7 @@ channel:<input type="text" id="xchannel"  value="">
 <button type="button" onclick="subscribe()" >subscribe</button>
 <button type="button" onclick="unsubscribe()" >unsubscribe</button>
 <button type="button" onclick="send()" >send</button>
+<button type="button" onclick="sendG()" >sendG</button>
 <button type="button" onclick="querydbdate()" >querydbdate</button>
 <button type="button" onclick="getDeviceID()" >getDeviceID</button>
 data:<input type="text" id="xmsg"  value="mymessage">
@@ -189,7 +191,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
             $("#message").append("<p>" + obj.data[i].data  +"</p>");
        }
 
-        alert("unread not write sqlite");
+       alert("readed");
+
        //write sqlite and server are readed;
        wechat.rereaded( obj );
    };
@@ -219,7 +222,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "wechat.ebais.com.tw",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -238,7 +241,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "wechat.ebais.com.tw",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -270,8 +273,14 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //send
    function send(){
-        var newchann =  wechat.getInviteChann($("#isid").val() , $("#itid").val()  )
-        var pack = {  device:"desktop|mobile", channel: newchann , sid: $("#isid").val() ,tid: $("#itid").val() , action:"send",  category:"user" ,data:$("#xmsg").val() };
+        //var newchann =  wechat.getInviteChann($("#isid").val() , $("#itid").val()  )
+        var pack = { device:"desktop|mobile", channel: $("#xchannel").val(),sid: $("#isid").val() ,tid: $("#itid").val() , action:"send",  category:"user" ,data:$("#xmsg").val() };
+        wechat.send( pack );
+   }
+
+   //sendG
+   function sendG(){
+        var pack = { device:"desktop|mobile", channel: $("#xchannel").val(),sid: $("#isid").val(),tid: $("#itid").val(),gid:$("#xchannel").val(), action:"send",  category:"user" ,data:$("#xmsg").val()};
         wechat.send( pack );
    }
 
@@ -330,6 +339,13 @@ data:<input type="text" id="xmsg"  value="mymessage">
        });
    }
 
+   //test
+   function regGroup(){
+        var obj = { action:"insert" , m_id: "mytestuid", isgroup:1 , custom_name:"王大偉" };
+        wechat.register( obj , function(){
+            alert("error");
+        });
+   }
 
    //sendInvite
    function sendInvite(){
@@ -378,18 +394,19 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //     alert("error");
        //});
 
-       //sendloopabck*********************************************************************
-       //var robj = { data: [ obj ] };
-       //wechat.loopback( robj );
    }
 
+   //wechatRecieve
+   function wechatRecieve( data ){
+        console.log( data );
+   }
 
    //contacts
    function getContacts(){
         //{} get all
         //{corps: -1}
         //{m_id: 's001'}
-        var pack = {corps : -1} ;
+        var pack = {} ;
         wechat.getContacts( pack ,function(obj){
             console.log(obj);
             for (var i=0 ; i <  obj.data.length ; i++){
@@ -403,7 +420,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //unreadchat
    function unreadchat(){
-        wechat.unreadchat( function(data){
+        var pack = { offset:0 , limit: 10};
+        wechat.unreadchat( pack ,function(data){
             console.log( data );
         } , function(){
             alert("search error")
@@ -416,9 +434,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
         var pack = { sid : $("#isid").val() , tid: $("#itid").val() } ;
         wechat.secretInvite( pack );
     }
-
-//wechat.loopback( obj );
-
 
 </script>
 
@@ -435,6 +450,7 @@ Done  work:
 
 ## History
 
+* **v3.0.7** : 2016-10-11
 * **v3.0.5** : 2016-09-26
 * **v3.0.2** : 2016-09-19
 * **v3.0.0** : 2016-05-25
