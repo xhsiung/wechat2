@@ -317,7 +317,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //register
    function register(){
-       //corps: -1 mobile_owner , action:"insert|update|delete"
+       //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner|delall"
        var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
        console.log( obj );
 
@@ -328,7 +328,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
    function delRegister(){
-       //action:"insert|update|delete" , corps:-1 is owner
+       //action:"insert|update|delete|delallExcOwner|delall" , corps:-1 is owner
        //var obj = { action: "update" ,m_id: $("#m_id").val(), custom_name: "aaaa" , corps: -1 } ;
        var obj = { action: "delete" ,m_id: $("#m_id").val()} ;
        console.log( obj );

@@ -189,7 +189,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    function getDeviceID(){
         $("#message").append("<p>deviceid:" + wechat.deviceid  +"</p>");
    }
-
+Log.d(TAG , "delallExcOwner ");
    function existOwner(){
         wechat.existOwner(function(data){
             var existowner = ( data == 1) ? true : false;
@@ -199,7 +199,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //register
    function register(){
-       //corps: -1 mobile_owner , action:"insert|update|delete"
+       //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner|delall"
        var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
        console.log( obj );
 
@@ -210,15 +210,18 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
    function delRegister(){
-       //action:"insert|update|delete" , corps:-1 is owner
+       //action:"insert|update|delete|delall|delallExcOwner|delall" , corps: -1 is owner
        //var obj = { action: "update" ,m_id: $("#m_id").val(), custom_name: "aaaa" , corps: -1 } ;
-       var obj = { action: "delete" ,m_id: $("#m_id").val()} ;
+       //var obj = { action: "delete" ,m_id: $("#m_id").val()} ;
+       var obj = { action: "delallExcOwner" ,m_id: $("#m_id").val()} ;
+
        console.log( obj );
 
        //reigiter(jobj , errorcallback)
        wechat.register( obj , function(){
             alert("error");
        });
+
    }
 
    //test
