@@ -55,7 +55,7 @@
 	<source-file src="libs/socket.io-client-0.7.0.jar" target-dir="libs" />
 	<source-file src="libs/httpclient-4.3.6.jar" target-dir="libs" />
 	<source-file src="libs/android-async-http-1.4.9.jar" target-dir="libs" />
-	<source-file src="libs/ebus-3.0.8.jar" target-dir="libs" />
+	<source-file src="libs/ebus-3.0.9.jar" target-dir="libs" />
 	<!-- <hook type="after_plugin_install" src="scripts/afterBuild.js" /> -->
     </platform>
 

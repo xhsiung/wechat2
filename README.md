@@ -141,6 +141,7 @@ Sample
 <button type="button" onclick="getContacts()" >getContacts</button>
 <button type="button" onclick="unreadchat()" >unreadchat</button>
 <button type="button" onclick="regGroup()" >regGroup</button>
+<button type="button" onclick="delChatHistory()" >delChatHistory</button>
 <BR>
 
 <hr>
@@ -317,26 +318,37 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //register
    function register(){
-       //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner|delall"
+       //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
+
        var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
-       console.log( obj );
+       var obj2 = { action: "insert" ,m_id: "s002", custom_name: "xhsiung"} ;
+
+       //console.log( obj );
 
        //reigiter(jobj , errorcallback)
        wechat.register( obj , function(){
             alert("error");
        });
+
+       wechat.register( obj2 , function(){
+            alert("error");
+       });
+
    }
 
    function delRegister(){
-       //action:"insert|update|delete|delallExcOwner|delall" , corps:-1 is owner
+       //action:"insert|update|delete|delall|delallExcOwner" , corps: -1 is owner
        //var obj = { action: "update" ,m_id: $("#m_id").val(), custom_name: "aaaa" , corps: -1 } ;
-       var obj = { action: "delete" ,m_id: $("#m_id").val()} ;
+       //var obj = { action: "delete" ,m_id: $("#m_id").val()} ;
+       var obj = { action: "delallExcOwner" ,m_id: $("#m_id").val()} ;
+
        console.log( obj );
 
        //reigiter(jobj , errorcallback)
        wechat.register( obj , function(){
             alert("error");
        });
+
    }
 
    //test
@@ -435,6 +447,14 @@ data:<input type="text" id="xmsg"  value="mymessage">
         wechat.secretInvite( pack );
     }
 
+    function delChatHistory(){
+        //var pack = { cid:"uxxxx12344543534534"} ;
+        var pack = { channel:"s002@s001"} ;
+
+        wechat.del_chat_history( pack , function(data){
+            alert("row modify:" + data );
+        });
+    }
 </script>
 
 </body>

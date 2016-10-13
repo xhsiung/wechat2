@@ -133,13 +133,16 @@
         cordova.exec( null , null , "WeChat", "rereaded" , [arg0]);
     }
 
+    //getgtContacts
     WeChat.prototype.getContacts = function( arg0 , successCallback , errorCallback){
         cordova.exec( successCallback , errorCallback , "WeChat", "getContacts" , [arg0]);
     }
 
+    //exitsOwner
     WeChat.prototype.existOwner = function( successCallback){
         cordova.exec( successCallback , null , "WeChat", "existOwner" , []);
     }
+
 
     WeChat.prototype.getInviteChann = function( sid , tid){
         var max = ( sid > tid) ?  sid : tid;
@@ -147,12 +150,19 @@
         return max + "@" + min ;
     }
 
+    //unreadchat
     WeChat.prototype.unreadchat = function( arg0 ,successCallback , errorCallback){
         cordova.exec( successCallback , errorCallback , "WeChat", "unreadchat" , [arg0]);
     }
 
+    //ask
     WeChat.prototype.ask = function( arg0 ){
             cordova.exec( null , null , "WeChat", "ask" , [ arg0 ]);
+    }
+
+    //del chat_history table
+    WeChat.prototype.del_chat_history = function( arg0 , successCallback){
+            cordova.exec( successCallback , null , "WeChat", "del_chat_history" , [ arg0 ]);
     }
 
     var wechat = new WeChat();
