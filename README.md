@@ -114,6 +114,12 @@ secretInvite
 wechat.secretInvite(args)
 ```
 
+del_chat_history
+```
+wechat.del_chat_history(args,successCallbcak)
+```
+
+
 Sample
 ```
 <!DOCTYPE html>
