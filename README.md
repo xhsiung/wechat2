@@ -142,6 +142,7 @@ Sample
 <button type="button" onclick="unreadchat()" >unreadchat</button>
 <button type="button" onclick="regGroup()" >regGroup</button>
 <button type="button" onclick="delChatHistory()" >delChatHistory</button>
+
 <BR>
 
 <hr>
@@ -223,7 +224,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "serverip",
+        var obj = { serverip: "serveip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -242,7 +243,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "serverip",
+        var obj = { serverip: "serveip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -337,10 +338,10 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
    function delRegister(){
-       //action:"insert|update|delete|delall|delallExcOwner" , corps: -1 is owner
+       //action:"insert|update|delete|delall|delallExcOwner|delcorps"
        //var obj = { action: "update" ,m_id: $("#m_id").val(), custom_name: "aaaa" , corps: -1 } ;
        //var obj = { action: "delete" ,m_id: $("#m_id").val()} ;
-       var obj = { action: "delallExcOwner" ,m_id: $("#m_id").val()} ;
+       var obj = { action: "delcorps" , corps: 0 } ;
 
        console.log( obj );
 
@@ -353,7 +354,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //test
    function regGroup(){
-        var obj = { action:"insert" , m_id: "mytestuid", isgroup:1 , custom_name:"王大偉" };
+        var obj = { action:"insert" , m_id: "mytestuid", isgroup:1 , custom_name:"My家族" };
         wechat.register( obj , function(){
             alert("error");
         });
@@ -378,7 +379,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
         for (var i=0 ; i< obj.data.length ; i++){
             var xsid = obj.data[i].sid;
             var xtid = obj.data[i].tid;
-            var xcustom_name = obj.data[i].custom_name;
+             var xcustom_name = obj.data[i].custom_name;
             var xcontact_id = obj.data[i].contact_id;
             alert( "Invite " + xsid );
 
@@ -435,7 +436,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
         var pack = { offset:0 , limit: 10};
         wechat.unreadchat( pack ,function(data){
             console.log( data );
-        } , function(){
+        }, function(){
             alert("search error")
         });
    }
@@ -455,6 +456,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
             alert("row modify:" + data );
         });
     }
+
+
 </script>
 
 </body>
