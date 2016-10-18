@@ -119,6 +119,15 @@ del_chat_history
 wechat.del_chat_history(args,successCallbcak)
 ```
 
+wechatOnInviteRecived
+```
+function wechatOnInviteRecived( obj ){}
+```
+
+wechatOnlinesed
+```
+function wechatOnlinesed( obj ){}
+```
 
 Sample
 ```
@@ -380,7 +389,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
    //recive invited
-   function wechatInviteRecived( obj ){
+   function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
         for (var i=0 ; i< obj.data.length ; i++){
             var xsid = obj.data[i].sid;
@@ -415,8 +424,9 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    }
 
-   //wechatRecieve
-   function wechatRecieve( data ){
+   //online users
+   function wechatOnlinesed( data ){
+        //alert("online");
         console.log( data );
    }
 
@@ -479,6 +489,7 @@ Done  work:
 
 ## History
 
+* **v3.0.13** : 2016-10-18
 * **v3.0.12** : 2016-10-17
 * **v3.0.11** : 2016-10-14
 * **v3.0.8** : 2016-10-11

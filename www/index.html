@@ -256,7 +256,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
    //recive invited
-   function wechatInviteRecived( obj ){
+   function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
         for (var i=0 ; i< obj.data.length ; i++){
             var xsid = obj.data[i].sid;
@@ -291,8 +291,9 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    }
 
-   //wechatRecieve
-   function wechatRecieve( data ){
+   //online users
+   function wechatOnlinesed( data ){
+        //alert("online");
         console.log( data );
    }
 
