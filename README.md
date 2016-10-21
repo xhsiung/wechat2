@@ -129,6 +129,11 @@ wechatOnlinesed
 function wechatOnlinesed( obj ){}
 ```
 
+wechatFromReaded
+```
+function wechatFromReaded( obj ){}
+```
+
 Sample
 ```
 <!DOCTYPE html>
@@ -239,7 +244,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "serveip",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -258,7 +263,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "serveip",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -284,7 +289,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //unsubscribe
    function unsubscribe(){
-       var channMsg = { channel: mydeviceid };
+       var channMsg = { channel: $("#xchannel").val() };
        wechat.unsubscribe( channMsg );
    }
 
@@ -336,7 +341,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
    function register(){
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
-       var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
+       //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
+       var obj = { action: "insert" ,m_id: "u20697", custom_name: '吳佩如' , corps: -1 } ;
        var obj2 = { action: "insert" ,m_id: "s002", custom_name: "xhsiung"} ;
 
        //console.log( obj );
@@ -345,6 +351,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
        wechat.register( obj , function(){
             alert("error");
        });
+
 
        wechat.register( obj2 , function(){
             alert("error");
@@ -388,47 +395,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
         wechat.subscribe( channMsg );
    }
 
-   //recive invited
-   function wechatOnInviteRecived( obj ){
-        console.log( "wechatInvite");
-        for (var i=0 ; i< obj.data.length ; i++){
-            var xsid = obj.data[i].sid;
-            var xtid = obj.data[i].tid;
-             var xcustom_name = obj.data[i].custom_name;
-            var xcontact_id = obj.data[i].contact_id;
-            alert( "Invite " + xsid );
 
-            // answer yes
-            //subscirbe
-            var newchann = wechat.getInviteChann( xsid, xtid);
-            var channMsg = { channel: newchann };
-            wechat.subscribe( channMsg );
-
-            var mobj = { action:"insert" , m_id: xsid , custom_name: xcustom_name  , contact_id: xcontact_id };
-            console.log( mobj );
-            //reigiter(jobj , errorcallback)
-            wechat.register( mobj , function(){
-                alert("error");
-            });
-        }
-
-
-
-       //register************************************************************************
-       //var mobj = { action:"insert" , m_id: xsid , custom_name: xcustom_name  , contact_id: xcontact_id };
-       //console.log( mobj );
-       //reigiter(jobj , errorcallback)
-       //wechat.register( mobj , function(){
-       //     alert("error");
-       //});
-
-   }
-
-   //online users
-   function wechatOnlinesed( data ){
-        //alert("online");
-        console.log( data );
-   }
 
    //contacts
    function getContacts(){
@@ -474,6 +441,54 @@ data:<input type="text" id="xmsg"  value="mymessage">
     }
 
 
+       //recive invited
+   function wechatOnInviteRecived( obj ){
+        console.log( "wechatInvite");
+        for (var i=0 ; i< obj.data.length ; i++){
+            var xsid = obj.data[i].sid;
+            var xtid = obj.data[i].tid;
+             var xcustom_name = obj.data[i].custom_name;
+            var xcontact_id = obj.data[i].contact_id;
+            alert( "Invite " + xsid );
+
+            // answer yes
+            //subscirbe
+            var newchann = wechat.getInviteChann( xsid, xtid);
+            var channMsg = { channel: newchann };
+            wechat.subscribe( channMsg );
+
+            var mobj = { action:"insert" , m_id: xsid , custom_name: xcustom_name  , contact_id: xcontact_id };
+            console.log( mobj );
+            //reigiter(jobj , errorcallback)
+            wechat.register( mobj , function(){
+                alert("error");
+            });
+        }
+
+
+
+       //register************************************************************************
+       //var mobj = { action:"insert" , m_id: xsid , custom_name: xcustom_name  , contact_id: xcontact_id };
+       //console.log( mobj );
+       //reigiter(jobj , errorcallback)
+       //wechat.register( mobj , function(){
+       //     alert("error");
+       //});
+
+   }
+
+   //online users
+   function wechatOnlinesed( obj ){
+        //alert("online");
+        console.log( obj );
+   }
+
+   //who fromReaded
+   function wechatFromReaded( obj ){
+        console.log( obj );
+   }
+
+
 </script>
 
 </body>
@@ -489,7 +504,7 @@ Done  work:
 
 ## History
 
-* **v3.0.16** : 2016-10-18
+* **v3.0.17** : 2016-10-21
 * **v3.0.12** : 2016-10-17
 * **v3.0.11** : 2016-10-14
 * **v3.0.8** : 2016-10-11
