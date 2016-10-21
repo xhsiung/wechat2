@@ -342,18 +342,12 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
        //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
-       var obj = { action: "insert" ,m_id: "u20697", custom_name: '吳佩如' , corps: -1 } ;
-       var obj2 = { action: "insert" ,m_id: "s002", custom_name: "xhsiung"} ;
+       var obj = { action: "insert" ,m_id: "s002", custom_name: "xhsiung"} ;
 
        //console.log( obj );
 
        //reigiter(jobj , errorcallback)
        wechat.register( obj , function(){
-            alert("error");
-       });
-
-
-       wechat.register( obj2 , function(){
             alert("error");
        });
 
