@@ -119,6 +119,11 @@ del_chat_history
 wechat.del_chat_history(args,successCallbcak)
 ```
 
+undelivered
+```
+wechat.undelivered(successCallbcak)
+```
+
 wechatOnInviteRecived
 ```
 function wechatOnInviteRecived( obj ){}
@@ -186,6 +191,8 @@ channel:<input type="text" id="xchannel"  value="">
 <button type="button" onclick="sendG()" >sendG</button>
 <button type="button" onclick="querydbdate()" >querydbdate</button>
 <button type="button" onclick="getDeviceID()" >getDeviceID</button>
+
+<button type="button" onclick="undelivered()" >undelivered</button>
 data:<input type="text" id="xmsg"  value="mymessage">
 <BR>
 <button type="button" onclick="javascript:$('#message').empty()" >clear</button>
@@ -244,7 +251,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "serverip",
+        var obj = { serverip: "172.16.39.139",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -263,7 +270,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "serverip",
+        var obj = { serverip: "172.16.39.139",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -342,12 +349,18 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
        //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
-       var obj = { action: "insert" ,m_id: "s002", custom_name: "xhsiung"} ;
+       var obj = { action: "insert" ,m_id: "s001", custom_name: 'alex' , corps: -1 } ;
+       var obj2 = { action: "insert" ,m_id: "s002", custom_name:"xhsiung"} ;
 
        //console.log( obj );
 
        //reigiter(jobj , errorcallback)
        wechat.register( obj , function(){
+            alert("error");
+       });
+
+
+       wechat.register( obj2 , function(){
             alert("error");
        });
 
@@ -435,13 +448,22 @@ data:<input type="text" id="xmsg"  value="mymessage">
     }
 
 
-       //recive invited
+   //undelivered
+   function undelivered(){
+        wechat.undelivered( function(obj){
+             for (var i=0 ; i< obj.data.length ; i++){
+                 console.log(  obj );
+             }
+        });
+   }
+
+   //recive invited
    function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
         for (var i=0 ; i< obj.data.length ; i++){
             var xsid = obj.data[i].sid;
             var xtid = obj.data[i].tid;
-             var xcustom_name = obj.data[i].custom_name;
+            var xcustom_name = obj.data[i].custom_name;
             var xcontact_id = obj.data[i].contact_id;
             alert( "Invite " + xsid );
 
@@ -498,7 +520,7 @@ Done  work:
 
 ## History
 
-* **v3.0.18** : 2016-10-21
+* **v3.0.19** : 2016-10-24
 * **v3.0.12** : 2016-10-17
 * **v3.0.11** : 2016-10-14
 * **v3.0.8** : 2016-10-11

@@ -1,4 +1,3 @@
-
     var WeChat = function(){
        var self = this ;
        self.deviceid = null ;
@@ -107,8 +106,6 @@
 
     //querydbdate
     WeChat.prototype.querydbdate = function(arg0 ,successCallback,errorCallback){
-            //arg0.starttime = this.fmt(arg0.starttime);
-            //arg0.endtime = this.fmt( arg0.endtime );
             cordova.exec( successCallback , errorCallback , "WeChat", "querydbdate" , [arg0]);
     }
 
@@ -157,12 +154,17 @@
 
     //ask
     WeChat.prototype.ask = function( arg0 ){
-            cordova.exec( null , null , "WeChat", "ask" , [ arg0 ]);
+        cordova.exec( null , null , "WeChat", "ask" , [ arg0 ]);
     }
 
     //del chat_history table
     WeChat.prototype.del_chat_history = function( arg0 , successCallback){
-            cordova.exec( successCallback , null , "WeChat", "del_chat_history" , [ arg0 ]);
+        cordova.exec( successCallback , null , "WeChat", "del_chat_history" , [ arg0 ]);
+    }
+
+    //del chat_history table
+    WeChat.prototype.undelivered = function( successCallback){
+        cordova.exec( successCallback , null , "WeChat", "undelivered" , []);
     }
 
     var wechat = new WeChat();
