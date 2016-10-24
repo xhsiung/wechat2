@@ -162,7 +162,7 @@
         cordova.exec( successCallback , null , "WeChat", "del_chat_history" , [ arg0 ]);
     }
 
-    //del chat_history table
+    //undelivered
     WeChat.prototype.undelivered = function( successCallback){
         cordova.exec( successCallback , null , "WeChat", "undelivered" , []);
     }
