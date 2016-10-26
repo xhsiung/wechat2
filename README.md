@@ -251,7 +251,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "172.16.39.139",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -270,7 +270,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "172.16.39.139",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -520,7 +520,7 @@ Done  work:
 
 ## History
 
-* **v3.0.19** : 2016-10-24
+* **v3.0.21** : 2016-10-26
 * **v3.0.12** : 2016-10-17
 * **v3.0.11** : 2016-10-14
 * **v3.0.8** : 2016-10-11
