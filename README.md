@@ -124,6 +124,16 @@ undelivered
 wechat.undelivered(successCallbcak)
 ```
 
+openrooms
+```
+wechat.openrooms(args,function(args,successCallbcak){})
+```
+
+getOpenRooms
+```
+wechat.getOpenRooms(args,function(args,successCallbcak){})
+```
+
 wechatOnInviteRecived
 ```
 function wechatOnInviteRecived( obj ){}
@@ -134,10 +144,6 @@ wechatOnlinesed
 function wechatOnlinesed( obj ){}
 ```
 
-wechatFromReaded
-```
-function wechatFromReaded( obj ){}
-```
 
 Sample
 ```
