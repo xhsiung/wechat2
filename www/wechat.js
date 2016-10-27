@@ -178,6 +178,11 @@
         cordova.exec( successCallback , null , "WeChat", "getOpenRooms" , [ arg0 ]);
     }
 
+    //getOpenRooms
+     WeChat.prototype.getOnLineUsers = function( arg0 , successCallback){
+            cordova.exec( successCallback , null , "WeChat", "getOnLineUsers" , [ arg0 ]);
+     }
+
     var wechat = new WeChat();
     module.exports = wechat;
 

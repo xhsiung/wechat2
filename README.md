@@ -134,15 +134,16 @@ getOpenRooms
 wechat.getOpenRooms(args,function(args,successCallbcak){})
 ```
 
+getOnLineUsers
+```
+wechat.getOnLineUsers(args,function(args,successCallbcak){})
+```
+
 wechatOnInviteRecived
 ```
 function wechatOnInviteRecived( obj ){}
 ```
 
-wechatOnlinesed
-```
-function wechatOnlinesed( obj ){}
-```
 
 
 Sample
@@ -204,6 +205,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 <button type="button" onclick="openrooms()" >openrooms</button>
 <button type="button" onclick="closerooms()" >closerooms</button>
 <button type="button" onclick="getOpenRooms()" >getOpenRooms</button>
+<button type="button" onclick="getOnLineUsers()" >getOnLineUsers</button>
 <BR>
 
 <button type="button" onclick="javascript:$('#message').empty()" >clear</button>
@@ -500,6 +502,22 @@ data:<input type="text" id="xmsg"  value="mymessage">
       });
    }
 
+   //onlines
+   function getOnLineUsers(){
+       var users = [] ;
+       var user00 = { sid: "s001"};
+       users.push( user00);
+
+       var user01 = { sid: "s002"};
+       users.push( user01) ;
+
+       var pack = { data: users };
+
+       wechat.getOnLineUsers( pack , function(obj){
+            console.log( obj );
+       });
+   }
+
 
    //recive invited
    function wechatOnInviteRecived( obj ){
@@ -526,8 +544,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
         }
 
 
-
-       //register************************************************************************
+       //register***************************************************************************************
        //var mobj = { action:"insert" , m_id: xsid , custom_name: xcustom_name  , contact_id: xcontact_id };
        //console.log( mobj );
        //reigiter(jobj , errorcallback)
@@ -535,12 +552,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //     alert("error");
        //});
 
-   }
-
-   //online users
-   function wechatOnlinesed( obj ){
-        //alert("online");
-        console.log( obj );
    }
 
 
@@ -559,7 +570,7 @@ Done  work:
 
 ## History
 
-* **v3.0.22** : 2016-10-27
+* **v3.0.23** : 2016-10-27
 * **v3.0.21** : 2016-10-26
 * **v3.0.12** : 2016-10-17
 * **v3.0.11** : 2016-10-14
