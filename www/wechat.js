@@ -1,3 +1,4 @@
+
     var WeChat = function(){
        var self = this ;
        self.deviceid = null ;
@@ -162,9 +163,19 @@
         cordova.exec( successCallback , null , "WeChat", "del_chat_history" , [ arg0 ]);
     }
 
-    //undelivered
+    //del undelivered
     WeChat.prototype.undelivered = function( successCallback){
         cordova.exec( successCallback , null , "WeChat", "undelivered" , []);
+    }
+
+    //openrooms
+    WeChat.prototype.openrooms = function( arg0 , successCallback){
+        cordova.exec( successCallback , null , "WeChat", "openrooms" , [ arg0 ]);
+    }
+
+    //getOpenRooms
+    WeChat.prototype.getOpenRooms = function( arg0 , successCallback){
+        cordova.exec( successCallback , null , "WeChat", "getOpenRooms" , [ arg0 ]);
     }
 
     var wechat = new WeChat();

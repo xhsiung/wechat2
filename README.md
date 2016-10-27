@@ -181,6 +181,7 @@ sid:<input type="text" id="isid"  value="s001">
 tid:<input type="text" id="itid"  value="s002">
 <button type="button" onclick="sendInvite()" >Invite</button>
 <button type="button" onclick="secretInvite()" >secretInvite</button>
+
 <BR>
 
 <hr>
@@ -194,7 +195,11 @@ channel:<input type="text" id="xchannel"  value="">
 
 <button type="button" onclick="undelivered()" >undelivered</button>
 data:<input type="text" id="xmsg"  value="mymessage">
+<button type="button" onclick="openrooms()" >openrooms</button>
+<button type="button" onclick="closerooms()" >closerooms</button>
+<button type="button" onclick="getOpenRooms()" >getOpenRooms</button>
 <BR>
+
 <button type="button" onclick="javascript:$('#message').empty()" >clear</button>
 
 
@@ -457,6 +462,39 @@ data:<input type="text" id="xmsg"  value="mymessage">
         });
    }
 
+
+   //openrooms
+   function openrooms(){
+        //action: "open"|"close"
+        var pack = { channel:"s002@s001", action:"open" };
+        wechat.openrooms( pack , function(data){
+            console.log( data );
+        });
+   }
+
+   //closerooms
+   function closerooms(){
+        //action: "open"|"close"
+        var pack = { channel:"s002@s001", action:"close" };
+        wechat.openrooms( pack , function(data){
+            console.log( data );
+        });
+   }
+
+   //getOpenRooms
+   function getOpenRooms(){
+      var pack = { channel:"s002@s001" , from: "s002" };
+      wechat.getOpenRooms( pack , function(obj){
+          console.log(obj);
+          for (var i=0 ; i< obj.data.length ; i++){
+            console.log( obj.data[i].sid );
+            console.log( obj.data[i].starttime );
+            console.log( obj.data[i].endtime );
+          }
+      });
+   }
+
+
    //recive invited
    function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
@@ -499,11 +537,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
         console.log( obj );
    }
 
-   //who fromReaded
-   function wechatFromReaded( obj ){
-        console.log( obj );
-   }
-
 
 </script>
 
@@ -520,6 +553,7 @@ Done  work:
 
 ## History
 
+* **v3.0.22** : 2016-10-27
 * **v3.0.21** : 2016-10-26
 * **v3.0.12** : 2016-10-17
 * **v3.0.11** : 2016-10-14
