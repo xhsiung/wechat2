@@ -178,9 +178,14 @@
         cordova.exec( successCallback , null , "WeChat", "getOpenRooms" , [ arg0 ]);
     }
 
-    //getOpenRooms
+    //getOnLineUsers
      WeChat.prototype.getOnLineUsers = function( arg0 , successCallback){
             cordova.exec( successCallback , null , "WeChat", "getOnLineUsers" , [ arg0 ]);
+     }
+
+    //crudNews
+     WeChat.prototype.crudTsFlag = function( arg0 , successCallback){
+            cordova.exec( successCallback , null , "WeChat", "crudTsFlag" , [ arg0 ]);
      }
 
     var wechat = new WeChat();

@@ -139,6 +139,11 @@ getOnLineUsers
 wechat.getOnLineUsers(args,function(args,successCallbcak){})
 ```
 
+crudTsFlag
+```
+wechat.crudTsFlag(args,function(args,successCallbcak){})
+```
+
 wechatOnInviteRecived
 ```
 function wechatOnInviteRecived( obj ){}
@@ -206,6 +211,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 <button type="button" onclick="closerooms()" >closerooms</button>
 <button type="button" onclick="getOpenRooms()" >getOpenRooms</button>
 <button type="button" onclick="getOnLineUsers()" >getOnLineUsers</button>
+<button type="button" onclick="crudTsFlag()" >crudTsFlag</button>
 <BR>
 
 <button type="button" onclick="javascript:$('#message').empty()" >clear</button>
@@ -502,6 +508,23 @@ data:<input type="text" id="xmsg"  value="mymessage">
       });
    }
 
+
+   //crudTsFlag
+   function crudTsFlag(){
+        //update|insert
+        var pack = { action:"update" ,flag:"news" , ts:"1234567890123"};
+        wechat.crudTsFlag( pack , function(obj){
+            console.log("ok");
+        });
+
+        //select
+        var pack = { action:"query",flag:"news"};
+        wechat.crudTsFlag(pack , function(obj){
+            console.log( obj );
+        });
+   }
+
+
    //onlines
    function getOnLineUsers(){
        var users = [] ;
@@ -514,7 +537,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
        var pack = { data: users };
 
        wechat.getOnLineUsers( pack , function(obj){
-            console.log( obj );
+            console.log( pack  );
        });
    }
 
@@ -570,6 +593,7 @@ Done  work:
 
 ## History
 
+* **v3.0.25** : 2016-11-04
 * **v3.0.24** : 2016-11-01
 * **v3.0.23** : 2016-10-27
 * **v3.0.21** : 2016-10-26
