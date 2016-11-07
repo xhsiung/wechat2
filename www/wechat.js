@@ -183,10 +183,16 @@
             cordova.exec( successCallback , null , "WeChat", "getOnLineUsers" , [ arg0 ]);
      }
 
-    //crudNews
+    //crudTsFlag
      WeChat.prototype.crudTsFlag = function( arg0 , successCallback){
             cordova.exec( successCallback , null , "WeChat", "crudTsFlag" , [ arg0 ]);
      }
+
+     //crudNews
+     WeChat.prototype.crudNews = function( arg0 , successCallback){
+        cordova.exec( successCallback , null , "WeChat", "crudNews" , [ arg0 ]);
+     }
+
 
     var wechat = new WeChat();
     module.exports = wechat;
