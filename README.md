@@ -248,7 +248,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
        alert("readed");
 
        //write sqlite and server are readed;
-       wechat.rereaded( obj );
+       //wechat.rereaded( obj );   //deprecated
    };
 
 
@@ -336,6 +336,12 @@ data:<input type="text" id="xmsg"  value="mymessage">
    function sendG(){
         var pack = { device:"desktop|mobile", channel: $("#xchannel").val(),sid: $("#isid").val(),tid: $("#itid").val(),gid:$("#xchannel").val(), action:"send",  category:"user" ,data:$("#xmsg").val()};
         wechat.send( pack );
+
+        /*
+        setInterval(function(){
+            wechat.send( pack );
+        },100);
+        */
    }
 
    /*notify equipment
@@ -412,6 +418,13 @@ data:<input type="text" id="xmsg"  value="mymessage">
         wechat.register( obj , function(){
             alert("error");
         });
+
+        /*
+        var obj2 = { action:"insert" , m_id: "mytestuid2", isgroup:1 , custom_name:"My家族" };
+        wechat.register( obj2 , function(){
+            alert("error");
+        });
+        */
    }
 
    //sendInvite
@@ -448,8 +461,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //unreadchat
    function unreadchat(){
-        var pack = { offset:0 , limit: 10};
-        wechat.unreadchat( pack ,function(data){
+
+        wechat.unreadchat( function(data){
             console.log( data );
         }, function(){
             alert("search error")
@@ -617,6 +630,6 @@ Done  work:
 
 ## History
 
+* **v3.0.30** : 2016-11-14
 * **v3.0.29** : 2016-11-07
 * **v3.0.28** : 2016-11-04
-* **v3.0.24** : 2016-11-01

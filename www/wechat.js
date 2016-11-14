@@ -149,8 +149,8 @@
     }
 
     //unreadchat
-    WeChat.prototype.unreadchat = function( arg0 ,successCallback , errorCallback){
-        cordova.exec( successCallback , errorCallback , "WeChat", "unreadchat" , [arg0]);
+    WeChat.prototype.unreadchat = function( successCallback , errorCallback){
+        cordova.exec( successCallback , errorCallback , "WeChat", "unreadchat" , []);
     }
 
     //ask
@@ -188,7 +188,7 @@
             cordova.exec( successCallback , null , "WeChat", "crudTsFlag" , [ arg0 ]);
      }
 
-     //crudNews
+     //crudTsFlag
      WeChat.prototype.crudNews = function( arg0 , successCallback){
         cordova.exec( successCallback , null , "WeChat", "crudNews" , [ arg0 ]);
      }
