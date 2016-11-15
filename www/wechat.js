@@ -193,6 +193,10 @@
         cordova.exec( successCallback , null , "WeChat", "crudNews" , [ arg0 ]);
      }
 
+     //resetdb
+     WeChat.prototype.resetdb = function( errorCallback){
+        cordova.exec( null , errorCallback , "WeChat", "resetdb" , []);
+     }
 
     var wechat = new WeChat();
     module.exports = wechat;

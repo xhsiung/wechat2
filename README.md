@@ -126,34 +126,38 @@ wechat.undelivered(successCallbcak)
 
 openrooms
 ```
-wechat.openrooms(args,function(args,successCallbcak){})
+wechat.openrooms(args,function(successCallbcak){})
 ```
 
 getOpenRooms
 ```
-wechat.getOpenRooms(args,function(args,successCallbcak){})
+wechat.getOpenRooms(args,function(successCallbcak){})
 ```
 
 getOnLineUsers
 ```
-wechat.getOnLineUsers(args,function(args,successCallbcak){})
+wechat.getOnLineUsers(args,function(successCallbcak){})
 ```
 
 crudNews
 ```
-wechat.crudNews(args,function(args,successCallbcak){})
+wechat.crudNews(args,function(successCallbcak){})
 ```
 
 crudTsFlag
 ```
-wechat.crudTsFlag(args,function(args,successCallbcak){})
+wechat.crudTsFlag(args,function(successCallbcak){})
+```
+
+resetdb
+```
+wechat.resetdb(function(args,errorCallbcak){})
 ```
 
 wechatOnInviteRecived
 ```
 function wechatOnInviteRecived( obj ){}
 ```
-
 
 
 Sample
@@ -218,6 +222,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 <button type="button" onclick="getOnLineUsers()" >getOnLineUsers</button>
 <button type="button" onclick="crudTsFlag()" >crudTsFlag</button>
 <button type="button" onclick="crudNews()" >crudNews</button>
+<button type="button" onclick="resetdb()" >resetdb</button>
 <BR>
 
 <button type="button" onclick="javascript:$('#message').empty()" >clear</button>
@@ -561,6 +566,12 @@ data:<input type="text" id="xmsg"  value="mymessage">
         });
    }
 
+   //resetdb
+   function resetdb(){
+        wechat.resetdb(function(){
+            console.log("error");
+        });
+   }
 
    //onlines
    function getOnLineUsers(){
@@ -630,6 +641,6 @@ Done  work:
 
 ## History
 
+* **v3.0.32** : 2016-11-15
 * **v3.0.30** : 2016-11-14
 * **v3.0.29** : 2016-11-07
-* **v3.0.28** : 2016-11-04
