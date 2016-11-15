@@ -151,7 +151,7 @@ wechat.crudTsFlag(args,function(successCallbcak){})
 
 resetdb
 ```
-wechat.resetdb(function(args,errorCallbcak){})
+wechat.resetdb(function(errorCallbcak){})
 ```
 
 wechatOnInviteRecived
