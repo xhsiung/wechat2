@@ -159,7 +159,7 @@ wechatOnInviteRecived
 function wechatOnInviteRecived( obj ){}
 ```
 
-
+ 
 Sample
 ```
 <!DOCTYPE html>
