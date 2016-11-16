@@ -159,6 +159,10 @@ wechatOnInviteRecived
 function wechatOnInviteRecived( obj ){}
 ```
 
+wechatOnMqMsg
+```
+function wechatOnMqMsg( obj ){}
+```
  
 Sample
 ```
@@ -281,7 +285,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "serveip",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -300,7 +304,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "serveip",
+        var obj = { serverip: "serverip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -587,6 +591,15 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
 
+   //TEST
+   function wechatOnMqMsg( obj ){
+        //do something here
+       for (var i=0 ; i <  obj.data.length ; i++){
+            $("#message").append("<p>" + obj.data[i].data  +"</p>");
+       }
+
+   }
+
    //recive invited
    function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
@@ -638,7 +651,6 @@ Done  work:
 
 ## History
 
+* **v3.0.36** : 2016-11-17
+* **v3.0.35** : 2016-11-17
 * **v3.0.33** : 2016-11-16
-* **v3.0.32** : 2016-11-15
-* **v3.0.30** : 2016-11-14
-* **v3.0.29** : 2016-11-07
