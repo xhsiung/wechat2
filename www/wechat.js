@@ -149,8 +149,8 @@
     }
 
     //unreadchat
-    WeChat.prototype.unreadchat = function( successCallback , errorCallback){
-        cordova.exec( successCallback , errorCallback , "WeChat", "unreadchat" , []);
+    WeChat.prototype.unreadchat = function( successCallback ){
+        cordova.exec( successCallback , null , "WeChat", "unreadchat" , []);
     }
 
     //ask
