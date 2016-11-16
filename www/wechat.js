@@ -169,8 +169,8 @@
     }
 
     //openrooms
-    WeChat.prototype.openrooms = function( arg0 , successCallback){
-        cordova.exec( successCallback , null , "WeChat", "openrooms" , [ arg0 ]);
+    WeChat.prototype.openrooms = function( arg0 ){
+        cordova.exec( null , null , "WeChat", "openrooms" , [ arg0 ]);
     }
 
     //getOpenRooms

@@ -340,9 +340,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    function openrooms(){
         //action: "open"|"close"
         var pack = { channel:"s002@s001", action:"open" };
-        wechat.openrooms( pack , function(data){
-            console.log( data );
-        });
+        wechat.openrooms( pack );
    }
 
    //closerooms

@@ -281,7 +281,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //init
    function initConn(){
-        var obj = { serverip: "serverip",
+        var obj = { serverip: "serveip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -300,7 +300,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save config
    function saveconf(){
-        var obj = { serverip: "serverip",
+        var obj = { serverip: "serveip",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -386,6 +386,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
        //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
        var obj = { action: "insert" ,m_id: "s001", custom_name: 'alex' , corps: -1 } ;
+
        var obj2 = { action: "insert" ,m_id: "s002", custom_name:"xhsiung"} ;
 
        //console.log( obj );
@@ -419,17 +420,17 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //test
    function regGroup(){
-        var obj = { action:"insert" , m_id: "mytestuid", isgroup:1 , custom_name:"My家族" };
+        var obj = { action:"insert" , m_id: "g001", isgroup:1 , custom_name:"My家族" };
         wechat.register( obj , function(){
             alert("error");
         });
 
-        /*
-        var obj2 = { action:"insert" , m_id: "mytestuid2", isgroup:1 , custom_name:"My家族" };
+
+        var obj2 = { action:"insert" , m_id: "g002", isgroup:1 , custom_name:"My家族2" };
         wechat.register( obj2 , function(){
             alert("error");
         });
-        */
+
    }
 
    //sendInvite
@@ -469,8 +470,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
         wechat.unreadchat( function(data){
             console.log( data );
-        }, function(){
-            alert("search error")
         });
    }
 
@@ -505,9 +504,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    function openrooms(){
         //action: "open"|"close"
         var pack = { channel:"s002@s001", action:"open" };
-        wechat.openrooms( pack , function(data){
-            console.log( data );
-        });
+        wechat.openrooms( pack );
    }
 
    //closerooms
