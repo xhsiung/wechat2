@@ -597,7 +597,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
        for (var i=0 ; i <  obj.data.length ; i++){
             $("#message").append("<p>" + obj.data[i].data  +"</p>");
        }
-
    }
 
    //recive invited
@@ -651,6 +650,6 @@ Done  work:
 
 ## History
 
-* **v3.0.36** : 2016-11-17
+* **v3.0.37** : 2016-11-18
 * **v3.0.35** : 2016-11-17
 * **v3.0.33** : 2016-11-16
