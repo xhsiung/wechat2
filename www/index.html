@@ -423,14 +423,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
 
-   //TEST
-   function wechatOnMqMsg( obj ){
-        //do something here
-       for (var i=0 ; i <  obj.data.length ; i++){
-            $("#message").append("<p>" + obj.data[i].data  +"</p>");
-       }
-   }
-
    //recive invited
    function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
