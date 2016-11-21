@@ -586,6 +586,13 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
 
+   //getImageData
+   function wechatOnImageRecived( obj ){
+        wechat.getImageData( obj , function( data) {
+            console.log( data );
+        });
+   }
+
    //recive invited
    function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
@@ -637,6 +644,6 @@ Done  work:
 
 ## History
 
+* **v3.0.40** : 2016-11-21
 * **v3.0.39** : 2016-11-19
 * **v3.0.35** : 2016-11-17
-* **v3.0.33** : 2016-11-16

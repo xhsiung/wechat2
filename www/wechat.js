@@ -198,6 +198,11 @@
         cordova.exec( null , errorCallback , "WeChat", "resetdb" , []);
      }
 
+    //getImageData
+     WeChat.prototype.getImageData = function( arg0 , successCallback){
+        cordova.exec( successCallback , null , "WeChat", "getImageData" , [arg0]);
+     }
+
     var wechat = new WeChat();
     module.exports = wechat;
 
