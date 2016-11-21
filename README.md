@@ -152,6 +152,7 @@ wechat.crudTsFlag(args,function(successCallbcak){})
 getImageData
 ```
 wechat.getImageData(args,function(successCallbcak){})
+```
 
 resetdb
 ```
