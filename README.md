@@ -149,11 +149,6 @@ crudTsFlag
 wechat.crudTsFlag(args,function(successCallbcak){})
 ```
 
-getImageData
-```
-wechat.getImageData(args,function(successCallbcak){})
-```
-
 resetdb
 ```
 wechat.resetdb(function(errorCallbcak){})
@@ -471,7 +466,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //unreadchat
    function unreadchat(){
-
         wechat.unreadchat( function(data){
             console.log( data );
         });
@@ -591,13 +585,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
 
-   //getImageData
-   function wechatOnImageRecived( obj ){
-        wechat.getImageData( obj , function( data) {
-            console.log( data );
-        });
-   }
-
    //recive invited
    function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
@@ -649,6 +636,6 @@ Done  work:
 
 ## History
 
+* **v3.0.43** : 2016-11-22
 * **v3.0.42** : 2016-11-21
 * **v3.0.39** : 2016-11-19
-* **v3.0.35** : 2016-11-17

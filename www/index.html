@@ -303,7 +303,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //unreadchat
    function unreadchat(){
-
         wechat.unreadchat( function(data){
             console.log( data );
         });
@@ -422,16 +421,6 @@ data:<input type="text" id="xmsg"  value="mymessage">
        });
    }
 
-
-   //getImageData
-
-   function wechatOnImageRecived( obj ){
-        console.log("getImagedata");
-        console.log( obj) ;
-        wechat.getImageData( obj , function( data) {
-            console.log( data );
-        });
-   }
 
    //recive invited
    function wechatOnInviteRecived( obj ){
