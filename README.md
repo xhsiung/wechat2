@@ -376,9 +376,9 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
        //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
-       var obj = { action: "insert" ,m_id: "s001", custom_name: 'alex' , corps: -1 , created_time:"1479959062300"} ;
+       var obj = { action: "insert" ,m_id: "s001", custom_name: 'alex' , corps: -1 , updated_time:"1479959062300"} ;
 
-       var obj2 = { action: "insert" ,m_id: "s002", custom_name:"xhsiung" , created_time:"1479959062500" } ;
+       var obj2 = { action: "insert" ,m_id: "s002", custom_name:"xhsiung" , updated_time:"1479959062500" } ;
 
        //console.log( obj );
 
@@ -411,13 +411,13 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //test
    function regGroup(){
-        var obj = { action:"insert" , m_id: "g001", isgroup:1 , custom_name:"My家族" , created_time:"1479959062600"};
+        var obj = { action:"insert" , m_id: "g001", isgroup:1 , custom_name:"My家族" , updated_time:"1479959062600"};
         wechat.register( obj , function(){
             alert("error");
         });
 
 
-        var obj2 = { action:"insert" , m_id: "g002", isgroup:1 , custom_name:"My家族2" , created_time:"1479959062700"};
+        var obj2 = { action:"insert" , m_id: "g002", isgroup:1 , custom_name:"My家族2" , updated_time:"1479959062700"};
         wechat.register( obj2 , function(){
             alert("error");
         });
@@ -628,6 +628,6 @@ Done  work:
 
 ## History
 
-* **v3.0.45** : 2016-11-24
+* **v3.0.46** : 2016-11-24
 * **v3.0.43** : 2016-11-22
 * **v3.0.42** : 2016-11-21
