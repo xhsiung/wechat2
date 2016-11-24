@@ -51,8 +51,8 @@
     };
 
     //initConn
-    WeChat.prototype.initConn = function( arg0 ){
-        cordova.exec( null , null , "WeChat", "initConn" , [arg0]);
+    WeChat.prototype.initConn = function(){
+        cordova.exec( null , null , "WeChat", "initConn" , []);
     }
 
     //connection
@@ -93,16 +93,6 @@
     //loopback
     WeChat.prototype.loopback = function(arg0){
             cordova.exec( null , null , "WeChat", "loopback" , [arg0]);
-    }
-
-    //saveconf
-    WeChat.prototype.saveconf = function(arg0){
-        cordova.exec( null , null , "WeChat", "saveconf" , [arg0]);
-    }
-
-    //saveDB
-    WeChat.prototype.savedb = function(arg0){
-            cordova.exec( null , null , "WeChat", "savedb" , [arg0]);
     }
 
     //querydbdate
@@ -196,6 +186,16 @@
      //resetdb
      WeChat.prototype.resetdb = function( errorCallback){
         cordova.exec( null , errorCallback , "WeChat", "resetdb" , []);
+     }
+
+     //saveChatSettings
+     WeChat.prototype.saveChatSettings = function( arg0 , errorCallback){
+        cordova.exec( null , errorCallback , "WeChat", "saveChatSettings" , [ arg0 ]);
+     }
+
+     //getChatSettings
+     WeChat.prototype.getChatSettings = function(successCallback){
+        cordova.exec( successCallback , null , "WeChat", "getChatSettings" , [ ]);
      }
 
     var wechat = new WeChat();
