@@ -15,7 +15,7 @@
 </div>
 
 
-<input type="text" id="m_id"  value="s001">
+<input type="text" id="m_id"  value="u001">
 <input type="text" id="custom_name"  value="alex" >
 <button type="button" onclick="existOwner()" >existOwner</button>
 <button type="button" onclick="register()" >register</button>
@@ -34,9 +34,9 @@
 <button type="button" onclick="disconnect()" >disconnect</button>
 
 <hr>
-channel:<input type="text" id="ichannel"  value="s002">
-sid:<input type="text" id="isid"  value="s001">
-tid:<input type="text" id="itid"  value="s002">
+channel:<input type="text" id="ichannel"  value="u002">
+sid:<input type="text" id="isid"  value="u001">
+tid:<input type="text" id="itid"  value="u002">
 <button type="button" onclick="sendInvite()" >Invite</button>
 <button type="button" onclick="secretInvite()" >secretInvite</button>
 
@@ -200,7 +200,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //querydbdate
    function querydbdate(){
-        var pack = { channel:"s009@s001" ,offset:0, limit:10 };
+        var pack = { channel:"u009@u001" ,offset:0, limit:10 };
         console.log(pack);
         wechat.querydbdate( pack , function(data){
             console.log( data );
@@ -227,9 +227,9 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
        //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
-       var obj = { action: "insert" ,m_id: "s001", custom_name: 'alex' , corps: -1 , updated_time:"1479959062300"} ;
+       var obj = { action: "insert" ,m_id: "u001", custom_name: 'alex' , corps: -1 , created_time:"1479959062301" ,  updated_time:"1479959062300"} ;
 
-       var obj2 = { action: "insert" ,m_id: "s002", custom_name:"xhsiung" , updated_time:"1479959062500" } ;
+       var obj2 = { action: "insert" ,m_id: "u002", custom_name:"xhsiung" ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
 
        //console.log( obj );
 
@@ -262,13 +262,13 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //test
    function regGroup(){
-        var obj = { action:"insert" , m_id: "g001", isgroup:1 , custom_name:"My家族" , updated_time:"1479959062600"};
+        var obj = { action:"insert" , m_id: "g001", isgroup:1 , custom_name:"My家族" , created_time:"1479959062601" ,updated_time:"1479959062600"};
         wechat.register( obj , function(){
             alert("error");
         });
 
 
-        var obj2 = { action:"insert" , m_id: "g002", isgroup:1 , custom_name:"My家族2" , updated_time:"1479959062700"};
+        var obj2 = { action:"insert" , m_id: "g002", isgroup:1 , custom_name:"My家族2" ,created_time:"1479959062701", updated_time:"1479959062700"};
         wechat.register( obj2 , function(){
             alert("error");
         });
@@ -294,7 +294,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    function getContacts(){
         //{} get all
         //{corps: -1}
-        //{m_id: 's001'}
+        //{m_id: 'u001'}
         var pack = {} ;
         wechat.getContacts( pack ,function(obj){
             console.log(obj);
@@ -323,7 +323,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
     function delChatHistory(){
         //var pack = { cid:"uxxxx12344543534534"} ;
-        var pack = { channel:"s002@s001"} ;
+        var pack = { channel:"u002@u001"} ;
 
         wechat.del_chat_history( pack , function(data){
             alert("row modify:" + data );
@@ -344,14 +344,14 @@ data:<input type="text" id="xmsg"  value="mymessage">
    //openrooms
    function openrooms(){
         //action: "open"|"close"
-        var pack = { channel:"s002@s001", action:"open" };
+        var pack = { channel:"u002@u001", action:"open" };
         wechat.openrooms( pack );
    }
 
    //closerooms
    function closerooms(){
         //action: "open"|"close"
-        var pack = { channel:"s002@s001", action:"close" };
+        var pack = { channel:"u002@u001", action:"close" };
         wechat.openrooms( pack , function(data){
             console.log( data );
         });
@@ -359,7 +359,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //getOpenRooms
    function getOpenRooms(){
-      var pack = { channel:"s002@s001" , from: "s002" };
+      var pack = { channel:"u002@u001" , from: "u002" };
       wechat.getOpenRooms( pack , function(obj){
           console.log(obj);
           for (var i=0 ; i< obj.data.length ; i++){
@@ -414,10 +414,10 @@ data:<input type="text" id="xmsg"  value="mymessage">
    //onlines
    function getOnLineUsers(){
        var users = [] ;
-       var user00 = { sid: "s001"};
+       var user00 = { sid: "u001"};
        users.push( user00);
 
-       var user01 = { sid: "s002"};
+       var user01 = { sid: "u002"};
        users.push( user01) ;
 
        var pack = { data: users };
