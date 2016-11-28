@@ -484,6 +484,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
    function undelivered(){
         wechat.undelivered( function(obj){
              for (var i=0 ; i< obj.data.length ; i++){
+            //var pack = { cid: obj.data[i].cid  ,device:"desktop|mobile", channel: obj.data[i].channel,sid: obj.data[i].sid ,tid: obj.data[i].tid , action:"send",  category:"user" ,data: obj.data[i].data };
+            //wechat.send( pack );
                  console.log(  obj );
              }
         });
