@@ -113,7 +113,12 @@
 
     //register
     WeChat.prototype.register = function( arg0 , errorCallback){
-        cordova.exec( null , errorCallback , "WeChat", "register" , [arg0]);
+        var re = /^u|^g/;
+        if ( re.test( arg0.m_id )){
+            cordova.exec( null , errorCallback , "WeChat", "register" , [arg0]);
+        }else{
+            console.log("m_id is wrong:" + arg0.m_id );
+        }
     }
 
     //rereaded
