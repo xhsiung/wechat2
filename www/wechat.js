@@ -2,6 +2,7 @@
     var WeChat = function(){
        var self = this ;
        self.deviceid = null ;
+       self.sendtimes = 0;
 
        console.log("construct");
        self.channels = {
@@ -77,6 +78,7 @@
 
     //send
     WeChat.prototype.send = function(arg0){
+        //var gid = (typeof obj.gid === "undefined")? "" ; obj.gid ;
         cordova.exec( null , null , "WeChat", "send" , [arg0]);
     }
 
@@ -87,6 +89,7 @@
 
     //notify
     WeChat.prototype.notify = function(arg0){
+
             cordova.exec( null , null , "WeChat", "notify" , [arg0]);
     }
 
@@ -183,7 +186,7 @@
             cordova.exec( successCallback , null , "WeChat", "crudTsFlag" , [ arg0 ]);
      }
 
-     //crudTsFlag
+     //crudNews
      WeChat.prototype.crudNews = function( arg0 , successCallback){
         cordova.exec( successCallback , null , "WeChat", "crudNews" , [ arg0 ]);
      }
@@ -198,10 +201,17 @@
         cordova.exec( null , errorCallback , "WeChat", "saveChatSettings" , [ arg0 ]);
      }
 
+
      //getChatSettings
      WeChat.prototype.getChatSettings = function(successCallback){
         cordova.exec( successCallback , null , "WeChat", "getChatSettings" , [ ]);
      }
+
+
+    //clear
+    WeChat.prototype.clear = function(){
+            cordova.exec( null , null , "WeChat", "clear" , []);
+    }
 
     var wechat = new WeChat();
     module.exports = wechat;

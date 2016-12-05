@@ -60,9 +60,12 @@ data:<input type="text" id="xmsg"  value="mymessage">
 <button type="button" onclick="crudTsFlag()" >crudTsFlag</button>
 <button type="button" onclick="crudNews()" >crudNews</button>
 <button type="button" onclick="resetdb()" >resetdb</button>
+<button type="button" onclick="clearall()" >clearall</button>
+<button type="button" onclick="task()" >task</button>
+<button type="button" onclick="task2()" >task2</button>
 <BR>
 
-<button type="button" onclick="javascript:$('#message').empty()" >clear</button>
+<button type="button" onclick="javascript:$('#message').empty()" >myclear</button>
 
 
 <div id="message"></div>
@@ -118,7 +121,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save
    function saveChatSettings(){
-        var conf = { serverip: "serverip",
+        var conf = { serverip: "server",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     notifyTicker: "message",
@@ -335,9 +338,9 @@ data:<input type="text" id="xmsg"  value="mymessage">
    function undelivered(){
         wechat.undelivered( function(obj){
              for (var i=0 ; i< obj.data.length ; i++){
-	 //var pack = { cid: obj.data[i].cid  ,device:"desktop|mobile", channel: obj.data[i].channel,sid: obj.data[i].sid ,tid: obj.data[i].tid , action:"send",  category:"user" ,data: obj.data[i].data };
-         //wechat.send( pack );
-                 console.log(  obj );
+                //var pack = { cid: obj.data[i].cid  ,device:"desktop|mobile", channel: obj.data[i].channel,sid: obj.data[i].sid ,tid: obj.data[i].tid , action:"send",  category:"user" ,data: obj.data[i].data };
+                //wechat.send( pack );
+                console.log(  obj );
              }
         });
    }
@@ -413,6 +416,12 @@ data:<input type="text" id="xmsg"  value="mymessage">
         });
    }
 
+   //clear
+   function clearall(){
+        alert("clear");
+        wechat.clear();
+   }
+
    //onlines
    function getOnLineUsers(){
        var users = [] ;
@@ -465,6 +474,65 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    }
 
+
+   //task
+   function task(){
+       //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
+
+       clearall();
+
+       for (var i=1 ; i < 10 ; i++){
+            var obj = { action:"insert" , m_id: "g"+i, isgroup:1 , custom_name:"My家族"+i , created_time:"1479959062601" ,updated_time:"1479959062600"};
+            wechat.register( obj , function(){
+                alert("error");
+            });
+       }
+
+       //user
+       for (var i=1 ; i < 50 ; i++){
+            var obj = { action: "insert" ,m_id: "u"+i, custom_name:"auser"+i ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
+            wechat.register( obj , function(){
+                alert("error");
+            });
+       }
+
+       var obj = { action: "insert" ,m_id: "u0", custom_name:"auser0",corps: -1 ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
+       wechat.register( obj , function(){
+            alert("error");
+       });
+
+       initConn();
+   }
+
+
+   //task
+   function task2(){
+       //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
+
+       clearall();
+
+       for (var i=100 ; i < 110 ; i++){
+            var obj = { action:"insert" , m_id: "g"+i, isgroup:1 , custom_name:"My家族"+i , created_time:"1479959062601" ,updated_time:"1479959062600"};
+            wechat.register( obj , function(){
+                alert("error");
+            });
+       }
+
+       //user
+       for (var i=101 ; i < 150 ; i++){
+            var obj = { action: "insert" ,m_id: "u"+i, custom_name:"auser"+i ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
+            wechat.register( obj , function(){
+                alert("error");
+            });
+       }
+
+       var obj = { action: "insert" ,m_id: "u100", custom_name:"auser100",corps: -1, created_time:"1479959062501",updated_time:"1479959062500" } ;
+       wechat.register( obj , function(){
+            alert("error");
+       });
+
+       initConn();
+   }
 
 </script>
 
