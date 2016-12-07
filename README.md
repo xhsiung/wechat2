@@ -144,6 +144,11 @@ wechatOnInviteRecived
 ```
 function wechatOnInviteRecived( obj ){}
 ```
+
+wechatOnUnReadChat
+```
+function wechatOnUnReadChat( obj ){}
+```
  
 Sample
 ```
@@ -379,7 +384,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
        //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
-       var obj = { action: "insert" ,m_id: "u001", custom_name: 'alex' , corps: -1 , created_time:"1479959062301" ,  updated_time:"1479959062300"} ;
+       var obj = { action: "insert" ,m_id: "u001", custom_name: 'alex' , corps: -1 , xgroup:"g001" ,created_time:"1479959062301" ,  updated_time:"1479959062300"} ;
 
        var obj2 = { action: "insert" ,m_id: "u002", custom_name:"xhsiung" ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
 
@@ -588,6 +593,15 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
 
+   //unreadedReChat
+   function wechatOnUnReadChat( obj  ){
+       console.log( "unreadedReChat" );
+       for (var i=0 ; i< obj.data.length ; i++){
+            console.log( obj.data[i] );
+       }
+   }
+
+
    //recive invited
    function wechatOnInviteRecived( obj ){
         console.log( "wechatInvite");
@@ -625,6 +639,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
 
    //task
+   /*
    function task(){
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
@@ -682,6 +697,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
        initConn();
    }
+    */
 
 </script>
 
@@ -698,6 +714,6 @@ Done  work:
 
 ## History
 
-* **v3.0.59** : 2016-12-07
+* **v3.0.60** : 2016-12-07
 * **v3.0.57** : 2016-12-05
 * **v3.0.55** : 2016-12-02
