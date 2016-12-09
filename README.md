@@ -149,6 +149,12 @@ wechatOnUnReadChat
 ```
 function wechatOnUnReadChat( obj ){}
 ```
+
+wechatOnUnReadChatInit
+```
+function wechatOnUnReadChatInit( obj ){}
+```
+
  
 Sample
 ```
@@ -215,8 +221,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 <button type="button" onclick="crudNews()" >crudNews</button>
 <button type="button" onclick="resetdb()" >resetdb</button>
 <button type="button" onclick="clearall()" >clearall</button>
-<button type="button" onclick="task()" >task</button>
-<button type="button" onclick="task2()" >task2</button>
+
 <BR>
 
 <button type="button" onclick="javascript:$('#message').empty()" >myclear</button>
@@ -593,12 +598,22 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
 
-   //unreadedReChat
+   //wechatOnUnReadChat
    function wechatOnUnReadChat( obj  ){
        console.log( "unreadedReChat" );
        for (var i=0 ; i< obj.data.length ; i++){
             console.log( obj.data[i] );
        }
+   }
+
+   //wechatOnUnReadChat
+   function wechatOnUnReadChatInit( obj  ){
+       console.log( "wechatOnUnReadChatInit" );
+       /*
+       for (var i=0 ; i< obj.data.length ; i++){
+            console.log( obj.data[i] );
+       }*/
+       console.log( obj );
    }
 
 
@@ -638,8 +653,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
 
-   //task
-   /*
+
+   //task**********************************************************************************************
    function task(){
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
@@ -714,6 +729,6 @@ Done  work:
 
 ## History
 
-* **v3.0.61** : 2016-12-08
+* **v3.0.62** : 2016-12-09
 * **v3.0.57** : 2016-12-05
 * **v3.0.55** : 2016-12-02
