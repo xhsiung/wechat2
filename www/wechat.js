@@ -213,6 +213,20 @@
             cordova.exec( null , null , "WeChat", "clear" , []);
     }
 
+    //stopService
+    WeChat.prototype.stopService = function(){
+            cordova.exec( null , null , "WeChat", "stopService" , []);
+    }
+
+    //startService
+    WeChat.prototype.startService = function(){
+        cordova.exec( null , null , "WeChat", "startService" , []);
+    }
+
+    WeChat.prototype.isConnected = function( successCallback ){
+        cordova.exec( successCallback , null , "WeChat", "isConnected" , []);
+    }
+
     var wechat = new WeChat();
     module.exports = wechat;
 

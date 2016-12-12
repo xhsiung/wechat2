@@ -192,6 +192,9 @@ Sample
 <button type="button" onclick="getChatSettings()" >getChatSettings</button>
 <button type="button" onclick="initConn()" >initConn</button>
 <button type="button" onclick="disconnect()" >disconnect</button>
+<button type="button" onclick="stopService()" >stopService</button>
+<button type="button" onclick="startService()" >startService</button>
+<button type="button" onclick="isconnected()" >isConnected </button>
 
 <hr>
 channel:<input type="text" id="ichannel"  value="u002">
@@ -316,10 +319,20 @@ data:<input type="text" id="xmsg"  value="mymessage">
    }
 
 
-   //connnect
+
    //disconnect
    function disconnect(){
         wechat.disconnect();
+   }
+
+   //stopService  service
+   function stopService(){
+        wechat.stopService();
+   }
+
+   //startService  service
+   function startService(){
+        wechat.startService();
    }
 
    //subscribe
@@ -581,6 +594,15 @@ data:<input type="text" id="xmsg"  value="mymessage">
         wechat.clear();
    }
 
+   //isConnected
+   function isconnected(){
+
+        wechat.isConnected( function( conn ){
+            //0:disconnected , 1: connected
+            console.log( conn );
+        });
+   }
+
    //onlines
    function getOnLineUsers(){
        var users = [] ;
@@ -606,7 +628,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
        }
    }
 
-   //wechatOnUnReadChat
+   //wechatOnUnReadChatInit
    function wechatOnUnReadChatInit( obj  ){
        console.log( "wechatOnUnReadChatInit" );
        /*
@@ -655,6 +677,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
 
    //task**********************************************************************************************
+   /*
    function task(){
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
