@@ -30,8 +30,11 @@
 <hr>
 <button type="button" onclick="saveChatSettings()" >saveChatSettings</button>
 <button type="button" onclick="getChatSettings()" >getChatSettings</button>
-<button type="button" onclick="initConn()" >initConn</button>
+
+<button type="button" onclick="connect()" >connect</button>
 <button type="button" onclick="disconnect()" >disconnect</button>
+<button type="button" onclick="initConn()" >initConn</button>
+
 <button type="button" onclick="stopService()" >stopService</button>
 <button type="button" onclick="startService()" >startService</button>
 <button type="button" onclick="isconnected()" >isConnected </button>
@@ -163,6 +166,11 @@ data:<input type="text" id="xmsg"  value="mymessage">
    //disconnect
    function disconnect(){
         wechat.disconnect();
+   }
+
+   //connect
+   function connect(){
+        wechat.connect();
    }
 
    //stopService  service
