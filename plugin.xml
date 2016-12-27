@@ -41,7 +41,7 @@
        		 </receiver>
         </config-file>
 	
-	<source-file src="libs/android-support-v4.jar" target-dir="libs" />
+	<!-- <source-file src="libs/android-support-v4.jar" target-dir="libs" /> -->
 	<source-file src="libs/ShortcutBadger-master.jar" target-dir="libs" />
 	<source-file src="libs/engine.io-client-0.7.0.jar" target-dir="libs" />
 	<source-file src="libs/eventbus-3.0.0.jar" target-dir="libs" />
