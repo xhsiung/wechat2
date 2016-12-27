@@ -13,7 +13,9 @@
 
     <!-- android -->
     <platform name="android">
-	<framework src="com.android.support:appcompat-v7:21+" />
+	<!-- <framework src="com.android.support:appcompat-v7:23.4.0" /> -->
+	<framework src="tools/build.gradle" custom="true" type="gradleReference" />
+
 	<config-file target="res/xml/config.xml" parent="/*">
 	      	<feature name="WeChat" >
         			<param name="android-package" value="tw.com.bais.wechat.WeChat"/>
