@@ -126,16 +126,17 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //save
    function saveChatSettings(){
-        var conf = { serverip: "serverip",
+        var conf = { serverip: "",
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
-                    notifyTicker: "message",
-                    notifyTitle: "",
-                    hasVibrate: 1,
-                    hasSound: 1,
+                    hasNotify: 1,
+                    notifyTitle: "系統通知:",
+                    notifyTicker: "您有新訊息!!",
+                    hasVibrate: 0,
+                    hasSound: 0,
                     hasSaveEl: 1 ,
                     key: "1234567890mobile" ,
-                    fontSize: 12
+                    fontSize: 16
                     };
 
         wechat.saveChatSettings( conf , function(err){
@@ -250,7 +251,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
        //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
-       var obj = { action: "insert" ,m_id: "u001", custom_name: 'alex' , corps: -1 , xgroup:"g001" ,created_time:"1479959062301" ,  updated_time:"1479959062300"} ;
+       var obj = { action: "insert" ,m_id: "u001", custom_name:"alex" , corps:-1,  created_time:"1479959062201",updated_time:"1479959062300" } ;
 
        var obj2 = { action: "insert" ,m_id: "u002", custom_name:"xhsiung" ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
 
@@ -470,7 +471,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //wechatOnUnReadChat
    function wechatOnUnReadChat( obj  ){
-       console.log( "unreadedReChat" );
+       console.log( "wechatOnUnReadChat" );
        for (var i=0 ; i< obj.data.length ; i++){
             console.log( obj.data[i] );
        }
