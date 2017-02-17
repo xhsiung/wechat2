@@ -295,8 +295,8 @@ data:<input type="text" id="xmsg"  value="mymessage">
                     port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     hasNotify: 1,
-                    notifyTitle: "系統通知:",
-                    notifyTicker: "您有新訊息!!",
+                    notifyTitle: "",
+                    notifyTicker: "",
                     hasVibrate: 0,
                     hasSound: 0,
                     hasSaveEl: 1 ,
@@ -766,6 +766,6 @@ Done  work:
 
 ## History
 
+* **v3.0.99** : 2017-02-17
 * **v3.0.97** : 2017-02-14
 * **v3.0.94** : 2016-12-29
-* **v3.0.90** : 2016-12-29
