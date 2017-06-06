@@ -52,6 +52,9 @@ tid:<input type="text" id="itid"  value="u002">
 channel:<input type="text" id="xchannel"  value="">
 <button type="button" onclick="subscribe()" >subscribe</button>
 <button type="button" onclick="unsubscribe()" >unsubscribe</button>
+<button type="button" onclick="multiSubscribe()">multiSubscribe</button>
+<button type="button" onclick="multiUnSubscribe()">multiUnSubscribe</button>
+
 <button type="button" onclick="send()" >send</button>
 <button type="button" onclick="sendG()" >sendG</button>
 <button type="button" onclick="querydbdate()" >querydbdate</button>
@@ -127,12 +130,12 @@ data:<input type="text" id="xmsg"  value="mymessage">
    //save
    function saveChatSettings(){
         var conf = { serverip: "",
-                    port: 3002,
+                    port: 0,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     hasNotify: 1,
                     notifyTitle: "",
                     notifyTicker: "",
-                    hasVibrate: 0,
+                    hasVibrate: 1,
                     hasSound: 0,
                     hasSaveEl: 1 ,
                     key: "1234567890mobile" ,
@@ -196,6 +199,22 @@ data:<input type="text" id="xmsg"  value="mymessage">
        wechat.unsubscribe( channMsg );
    }
 
+    //multiSubscribe
+    function multiSubscribe(){
+        var pack = {multichanns:[{channel:"u002@u001"},
+                                 {channel:"u003@u002"},
+                                 {channel:$("#xchannel").val() }]};
+            wechat.multiSubscribe(pack);
+    }
+
+    function multiUnSubscribe(){
+        var pack = {multichanns:[{channel:"u002@u001"},
+                                 {channel:"u003@u002"},
+                                 {channel:$("#xchannel").val() }]};
+        wechat.multiUnSubscribe(pack);
+    }
+
+
    //send
    function send(){
         //var newchann =  wechat.getInviteChann($("#isid").val() , $("#itid").val()  )
@@ -255,6 +274,9 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
        var obj2 = { action: "insert" ,m_id: "u002", custom_name:"xhsiung" ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
 
+       var obj3 = { action: "insert" ,m_id: "g001", custom_name:"群組1" , isgroup:1, created_time:"1479959062501",updated_time:"1479959062500" } ;
+       var obj4 = { action: "insert" ,m_id: "g002", custom_name:"群組2" , isgroup:1, created_time:"1479959062501",updated_time:"1479959062500" } ;
+
        //console.log( obj );
 
        //reigiter(jobj , errorcallback)
@@ -264,6 +286,14 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
 
        wechat.register( obj2 , function(){
+            alert("error");
+       });
+
+       wechat.register( obj3 , function(){
+            alert("error");
+       });
+
+       wechat.register( obj4 , function(){
             alert("error");
        });
 
