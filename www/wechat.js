@@ -58,6 +58,7 @@
 
     //connection
     WeChat.prototype.connect = function(){
+           cordova.exec( null , null , "WeChat", "connect" , []);
     }
 
     //disconnection
@@ -74,6 +75,21 @@
     //unsubscribe
     WeChat.prototype.unsubscribe = function(arg0){
         cordova.exec( null , null , "WeChat", "unsubscribe" , [arg0]);
+    }
+
+    //multiSubscribe
+    WeChat.prototype.multiSubscribe = function(arg0){
+        var arrChann = [] ;
+        for (var i=0;i < arg0.multichanns.length ; i++){
+            arrChann.push({"channel":arg0.multichanns[i].channel ,"device":"mobile"})
+        }
+        var pack = { multichanns : arrChann };
+        cordova.exec( null , null , "WeChat", "multiSubscribe" , [pack]);
+    }
+
+    //multiUnSubscribe
+    WeChat.prototype.multiUnSubscribe = function(arg0){
+        cordova.exec( null , null , "WeChat", "multiUnSubscribe" , [arg0]);
     }
 
     //send
@@ -229,4 +245,3 @@
 
     var wechat = new WeChat();
     module.exports = wechat;
-
