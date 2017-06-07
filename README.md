@@ -190,7 +190,7 @@ Sample
 </div>
 
 
-<input type="text" id="m_id"  value="u001">
+<input type="text" id="m_id"  value="u002">
 <input type="text" id="custom_name"  value="alex" >
 <button type="button" onclick="existOwner()" >existOwner</button>
 <button type="button" onclick="register()" >register</button>
@@ -215,23 +215,24 @@ Sample
 <button type="button" onclick="isconnected()" >isConnected </button>
 
 <hr>
-channel:<input type="text" id="ichannel"  value="u002">
-sid:<input type="text" id="isid"  value="u001">
-tid:<input type="text" id="itid"  value="u002">
+channel:<input type="text" id="ichannel"  value="u001">
+sid:<input type="text" id="isid"  value="u002">
+tid:<input type="text" id="itid"  value="u001">
+gid:<input type="text" id="igid"  value="g001">
 <button type="button" onclick="sendInvite()" >Invite</button>
 <button type="button" onclick="secretInvite()" >secretInvite</button>
 
 <BR>
 
 <hr>
-channel:<input type="text" id="xchannel"  value="">
+channel:<input type="text" id="xchannel"  value="u002@u001">
 <button type="button" onclick="subscribe()" >subscribe</button>
 <button type="button" onclick="unsubscribe()" >unsubscribe</button>
 <button type="button" onclick="multiSubscribe()">multiSubscribe</button>
 <button type="button" onclick="multiUnSubscribe()">multiUnSubscribe</button>
 
 <button type="button" onclick="send()" >send</button>
-<button type="button" onclick="sendG()" >sendG</button>
+<button type="button" onclick="sendGroup()" >sendGroup</button>
 <button type="button" onclick="querydbdate()" >querydbdate</button>
 <button type="button" onclick="getDeviceID()" >getDeviceID</button>
 
@@ -397,9 +398,9 @@ data:<input type="text" id="xmsg"  value="mymessage">
         wechat.send( pack );
    }
 
-   //sendG
-   function sendG(){
-        var pack = { device:"desktop|mobile", channel: $("#xchannel").val(),sid: $("#isid").val(),tid: $("#itid").val(),gid:$("#xchannel").val(), action:"send",  category:"user" ,data:$("#xmsg").val()};
+   //sendGroup
+   function sendGroup(){
+        var pack = { device:"desktop|mobile", channel: $("#xchannel").val(),sid: $("#isid").val(),tid: $("#itid").val(),gid:$("#igid").val(), action:"send",  category:"user" ,data:$("#xmsg").val()};
         wechat.send( pack );
 
         /*
@@ -445,9 +446,9 @@ data:<input type="text" id="xmsg"  value="mymessage">
        //corps: -1 mobile_owner , action:"insert|update|delete|delallExcOwner"
 
        //var obj = { action: "insert" ,m_id: $("#m_id").val(), custom_name: $("#custom_name").val() , corps: -1 } ;
-       var obj = { action: "insert" ,m_id: "u001", custom_name:"alex" , corps:-1,  created_time:"1479959062201",updated_time:"1479959062300" } ;
+       var obj = { action: "insert" ,m_id: "u002", custom_name:"alex" , corps:-1,  created_time:"1479959062201",updated_time:"1479959062300" } ;
 
-       var obj2 = { action: "insert" ,m_id: "u002", custom_name:"xhsiung" ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
+       var obj2 = { action: "insert" ,m_id: "u001", custom_name:"xhsiung" ,  created_time:"1479959062501",updated_time:"1479959062500" } ;
 
        var obj3 = { action: "insert" ,m_id: "g001", custom_name:"群組1" , isgroup:1, created_time:"1479959062501",updated_time:"1479959062500" } ;
        var obj4 = { action: "insert" ,m_id: "g002", custom_name:"群組2" , isgroup:1, created_time:"1479959062501",updated_time:"1479959062500" } ;
