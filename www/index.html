@@ -131,7 +131,7 @@ data:<input type="text" id="xmsg"  value="mymessage">
    //save
    function saveChatSettings(){
         var conf = { serverip: "",
-                    port: 0,
+                    port: 3002,
                     notifyTarget: "tw.com.bais.wechat.MainActivity",
                     hasNotify: 1,
                     notifyTitle: "",
@@ -463,14 +463,18 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //resetdb
    function resetdb(){
-        wechat.resetdb(function(){
+        var pack = { db:"ChatHistory|Contacts|OpenRooms|ChatNews|ChatTsFlag|ChatSyncTs" };
+        wechat.resetdb( pack ,function(data){
             console.log("error");
         });
    }
 
    //clear
    function clearall(){
-        alert("clear");
+        //resetdb
+        resetdb();
+
+        //clear
         wechat.clear();
    }
 

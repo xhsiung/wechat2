@@ -1,4 +1,3 @@
-
     var WeChat = function(){
        var self = this ;
        self.deviceid = null ;
@@ -208,8 +207,8 @@
      }
 
      //resetdb
-     WeChat.prototype.resetdb = function( errorCallback){
-        cordova.exec( null , errorCallback , "WeChat", "resetdb" , []);
+     WeChat.prototype.resetdb = function( arg0, errorCallback){
+        cordova.exec( null , errorCallback , "WeChat", "resetdb" , [ arg0 ]);
      }
 
      //saveChatSettings
@@ -245,3 +244,4 @@
 
     var wechat = new WeChat();
     module.exports = wechat;
+

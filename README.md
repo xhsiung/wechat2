@@ -152,7 +152,7 @@ wechat.crudTsFlag(args,function(successCallbcak){})
 
 resetdb
 ```
-wechat.resetdb(function(errorCallbcak){})
+wechat.resetdb(args,function(errorCallbcak){})
 ```
 
 wechatOnInviteRecived
@@ -638,15 +638,16 @@ data:<input type="text" id="xmsg"  value="mymessage">
 
    //resetdb
    function resetdb(){
-        wechat.resetdb(function(){
+	var pack = { db:"ChatHistory|Contacts|OpenRooms|ChatNews|ChatTsFlag|ChatSyncTs"};
+        wechat.resetdb( pack ,function(data){
             console.log("error");
         });
    }
 
    //clear
    function clearall(){
-        alert("clear");
-        wechat.clear();
+        resetdb();
+	wechat.clear();
    }
 
    //isConnected
