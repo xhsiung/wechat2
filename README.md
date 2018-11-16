@@ -5,6 +5,9 @@ WeChat Project objectives is intergrated  communication for android .
 ## Structure 
 ![image](https://raw.githubusercontent.com/xhsiung/wechat2/master/imgs/flow.png)
 
+## View
+![image](https://raw.githubusercontent.com/xhsiung/wechat2/master/imgs/screen.jpg)
+
 ## Installation
 ```install
 cordova create mywechat
@@ -805,9 +808,11 @@ Done  work:
 * Auto  Connect  and Reconnect  your Server
 * Auto Subscirbe  your  device.uuid   channel
 * Always  Service  is  running
+* Support cordova 8.x
 
 ## History
 
+* **v3.1.3** : 2018-11-16
 * **v3.1.2** : 2017-08-11
 * **v3.1.1** : 2017-08-08
 * **v3.0.105** : 2017-02-18
