@@ -4,7 +4,7 @@
     version="0.0.1">
     <name>WeChat</name>
     <engines>
-        <engine name="cordova" version=">=4.1.1"/>
+        <engine name="cordova" version=">=6.1.0"/>
     </engines>
 
     <js-module src="www/wechat.js" name="WeChat">
